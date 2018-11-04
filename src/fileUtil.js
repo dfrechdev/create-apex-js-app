@@ -1,17 +1,17 @@
-const fs = require("fs");
+const fs = require('fs');
 function createDirectoryContents(templatePath, projectPath) {
     const filesToCreate = fs.readdirSync(templatePath);
 
-    filesToCreate.forEach(file => {
+    filesToCreate.forEach((file) => {
         const origFilePath = `${templatePath}/${file}`;
 
         const stats = fs.statSync(origFilePath);
 
         if (stats.isFile()) {
-            const contents = fs.readFileSync(origFilePath, "utf8");
+            const contents = fs.readFileSync(origFilePath, 'utf8');
 
             const writePath = `${projectPath}/${file}`;
-            fs.writeFileSync(writePath, contents, "utf8");
+            fs.writeFileSync(writePath, contents, 'utf8');
         } else if (stats.isDirectory()) {
             fs.mkdirSync(`${projectPath}/${file}`);
 
@@ -21,8 +21,9 @@ function createDirectoryContents(templatePath, projectPath) {
 }
 
 function writeProjectDetails(library) {
+    console.log(`setting package.json in "${library.execPath}/package.json"`);
     const packageJsonPath = `${library.execPath}/package.json`;
-    let packageJSON = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
+    let packageJSON = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
     packageJSON.name = library.name;
     packageJSON.version = library.version;
     packageJSON.libraryCode = library.code;
