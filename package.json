@@ -1,6 +1,6 @@
 {
     "name": "create-apex-js-lib",
-    "version": "1.0.0-alpha.1",
+    "version": "1.0.1-alpha.1",
     "description": "Generator to bootstrap a JavaScript library for an APEX application",
     "main": "index.js",
     "scripts": {},
