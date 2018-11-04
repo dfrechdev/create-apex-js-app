@@ -2,14 +2,17 @@
 
 "create-apex-js-lib" allows you to quickly bootstrap a JavaScript project for APEX, that bundles all your source code into a library. By using modern build tools, it will transform your source code in the following ways:
 
--   All JavaScript code is transpiled to ES5 syntax
--   Language features that are not part of ES5 and cannot be transpiled (eg. Promise, Map, Set, ...) will be automatically polyfilled if they are used in your code.
+-   All JavaScript code is bundled into one file.
+-   All JavaScript code is transpiled to ES5 syntax by default.
+-   Language features that are not part of ES5 and cannot be transpiled (eg. Promise, Map, Set, ...) are automatically polyfilled if you use them in your code.
 -   In development mode, source maps are created inline within the bundle file in order to debug your transformed code in the browser
 -   ESLint will statically check the source code with the rules as defined by the airbnb guide for JavaScript (see https://github.com/airbnb/javascript).
 -   CSS files that are imported into the JavaScript source files will be extracted autoprefixed into a seperate CSS file
 -   All code is minified and shortened
 
 The result of the build process is a JavaScript bundle that contains your transpiled source code with the dependencies and all the required polyfills. This file can be used in APEX and will expose your code in one library variable to your application.
+
+All default settings can be changed according to your need after you have created the library.
 
 ## Prerequisites
 
@@ -41,6 +44,14 @@ create-apex-library <library-name>
 ```
 
 ### Options
+
+By default, the required dependencies for your library are installed during the creation. If you do not want this and rather install the dependencies at a later point yourself, you can achieve this by running:
+
+```bash
+npx create-apex-js-lib <library-name> --noinstall
+```
+
+### Questions during creation of library
 
 During the creation of your library, you will be asked a few additional questions:
 
