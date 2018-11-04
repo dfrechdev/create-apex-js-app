@@ -25,7 +25,7 @@ class Library {
     }
 
     getTemplatePath() {
-        return path.join(this.execPath, templates, this.templateName);
+        return path.join(this.execPath, 'templates', this.templateName);
     }
 
     setQuestions() {
