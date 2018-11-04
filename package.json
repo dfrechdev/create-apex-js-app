@@ -13,7 +13,7 @@
         "javascript",
         "library"
     ],
-    "devDependencies": {
+    "dependencies": {
         "chalk": "^2.4.1",
         "commander": "^2.19.0",
         "cross-spawn": "^6.0.5",
@@ -21,7 +21,7 @@
         "log-symbols": "^2.2.0",
         "semver-regex": "^2.0.0"
     },
-    "dependencies": {},
+    "devDependencies": {},
     "repository": {
         "type": "git",
         "url": "https://github.com/dfrechdev/create-apex-js-lib"
