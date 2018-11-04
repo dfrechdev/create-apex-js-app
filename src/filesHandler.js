@@ -35,6 +35,6 @@ function mkdirSync(path) {
 }
 module.exports = {
     createDirectoryContents,
-    writeProjectDetails,
+    writeLibarayDetails,
     mkdirSync
 };

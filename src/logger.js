@@ -33,7 +33,7 @@ function logLibraryCreatedMsg(library) {
         'Bundles the app without source maps into the distribution folder and creates the documentations.\n'
     );
     console.log('We suggest that you begin by typing:\n');
-    console.log(chalk.cyan('$ cd ' + library.name));
+    console.log(chalk.cyan('$ cd'), library.name);
     console.log(chalk.cyan('$ npm run dev\n'));
     console.log(chalk.green('Happy coding!'));
 }
@@ -43,11 +43,8 @@ function logLibraryCreatedMsg(library) {
  */
 function logWelcomeMsg(library) {
     console.log('\n');
-    console.log(chalk.cyan('######################################################\n'));
-    console.log(chalk.cyan.bold('Welcome to the JavaScript library generator for APEX!\n'));
-    console.log(chalk.cyan('######################################################\n'));
+    console.log(chalk.cyan.bold('Create your JavaScript library for APEX!\n'));
     console.log(chalk.bold(logSymbols.info, 'Library name: ') + chalk.cyan(library.name) + '\n');
-    console.log('Please answer the following additional questions:\n');
 }
 // log functions
 function log(msg) {

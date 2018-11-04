@@ -8,10 +8,10 @@ switch (scriptName) {
         console.log(logSymbols.info, chalk.cyan('Generating documentation'));
         break;
     case 'dev':
-        console.log(logSymbols.info, chalk.cyan('Starting development bundeling'));
+        console.log(logSymbols.info, chalk.cyan('Creating development bundle'));
         break;
     case 'prod':
-        console.log(logSymbols.info, chalk.cyan('Starting production bundeling'));
+        console.log(logSymbols.info, chalk.cyan('Creating production bundle'));
         break;
     case 'build':
         console.log(logSymbols.info, chalk.cyan('Starting production build'));

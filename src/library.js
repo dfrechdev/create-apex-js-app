@@ -82,7 +82,7 @@ class Library {
         logger.logWelcomeMsg(this);
 
         inquirer.prompt(this.questions).then((answers) => {
-            logger.log('\ngreat, setting up your project now ...\n');
+            logger.log('\nsetting up your library now ...\n');
 
             this.code = answers['library-code'];
             this.version = answers['initial-version'];
@@ -97,20 +97,20 @@ class Library {
             }
 
             try {
-                logger.logInfo('copying project template');
+                logger.logInfo('copying template files');
                 filesHandler.createDirectoryContents(this.getTemplatePath(), this.getLibraryPath());
                 logger.logSuccess('done\n');
             } catch (e) {
-                logger.logError('Error while copying the template: ', e);
+                logger.logError('Error while copying the template files: ', e);
                 process.exit(1);
             }
 
             try {
-                logger.logInfo('setting project details');
-                filesHandler.writeProjectDetails(this);
+                logger.logInfo('setting library details');
+                filesHandler.writeLibarayDetails(this);
                 logger.logSuccess('done\n');
             } catch (e) {
-                logger.logError('Unable to set project details: ', e);
+                logger.logError('Unable to set library details: ', e);
                 process.exit(1);
             }
 
@@ -122,7 +122,7 @@ class Library {
                         logger.logLibraryCreatedMsg(this);
                     });
                 } catch (e) {
-                    logger.logError('Unable to set project details: ', e);
+                    logger.logError('An error occuered during the installation of the dependencies: ', e);
                     process.exit(1);
                 }
             } else {
