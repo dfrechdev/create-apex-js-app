@@ -13,7 +13,7 @@ The result of the build process is a JavaScript bundle that contains your transp
 
 ## Prerequisites
 
-To create your JavaScript library for APEX please make sute you have the follwing installed:
+To create your JavaScript library for APEX please make sure you have the follwing installed:
 
 -   node.js >= 8.9.0
 -   npm >= 5.2.0
@@ -23,11 +23,11 @@ While lower versions of npm likely also work, it is suggested to upgrade npm to 
 Additionally, the following optional tools are recommended for a better development experience:
 
 -   Visual Studio Code
--   Prettier Plugin for Visual Studio Code (a configuration file for prettier is included)
+-   Prettier Plugin for Visual Studio Code (a configuration file for Prettier is included)
 
 ## Installation
 
-To create your JavaScrtip library for APEX, run the following command in your shell with your library name replaced (the library name may only include letters, numbers, underscores and hashes):
+To create your JavaScript library for APEX, run the following command in your shell with your library name replaced (the library name may only include letters, numbers, underscores and hashes):
 
 ```bash
 npx create-apex-js-lib <library-name>
@@ -90,7 +90,7 @@ You can change your build to your needs by changing the following configuration 
 -   [rollup.config.js](https://rollupjs.org/guide/en): Configuration file for the bundle process of your library
 -   [.eslintrc.json](https://eslint.org/docs/user-guide/configuring): Settings file for ESLint. By default the predefined [airbnb](https://github.com/airbnb/javascript) rules are used for ESlint. If you want to use another set, you can change it in this configuration file.
 -   .eslintignore: Files that should be ignroed by ESLint
--   [.prettierrc](https://github.com/prettier/prettier): Rules for the "Prettier" extension in VSCode
+-   [.prettierrc](https://github.com/prettier/prettier): Rules for the Prettier extension in VSCode
 
 ### Externals
 
@@ -98,7 +98,7 @@ Externals are parts of your library, that will not be included in your bundle, a
 
 #### "apex" library
 
-The apex library is passeto your library as an argument when it is loaded. You therefore need to make sure, that your library is loaded after the apex library.
+The apex library is passed to your library as an argument when it is loaded. You therefore need to make sure, that your library is loaded after the apex library.
 
 #### jQuery
 
@@ -112,7 +112,7 @@ As you are working in your own namespace, it is safe to override the $ variable.
 
 #### Other
 
-For other external libraries that are already available on your site and you do not want to add to your library as a dependency, you can extend the configuration. In the rollup.config.js file your will find a "globals" and "external" attribute that you can amend to your needs.
+For other external libraries that are already available on your site and you do not want to add to your library as a dependency, you can extend the configuration. In the rollup.config.js file you will find a "globals" and "external" attribute that you can amend to your needs.
 
 ## Author
 
