@@ -107,7 +107,7 @@ class Library {
 
             try {
                 logger.logInfo('setting library details');
-                filesHandler.writeLibarayDetails(this);
+                filesHandler.writeLibrayDetails(this);
                 logger.logSuccess('done\n');
             } catch (e) {
                 logger.logError('Unable to set library details: ', e);
