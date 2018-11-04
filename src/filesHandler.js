@@ -21,13 +21,13 @@ function createDirectoryContents(templatePath, projectPath) {
 }
 
 function writeProjectDetails(library) {
-    console.log(`setting package.json in "${library.execPath}/package.json"`);
-    const packageJsonPath = `${library.execPath}/package.json`;
+    console.log(`setting package.json in "${library.getLibraryPath()}/package.json"`);
+    const packageJsonPath = `${library.getLibraryPath()}/package.json`;
     let packageJSON = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
     packageJSON.name = library.name;
     packageJSON.version = library.version;
     packageJSON.libraryCode = library.code;
-    fs.writeFileSync(`${library.execPath}/package.json`, JSON.stringify(packageJSON, null, 4));
+    fs.writeFileSync(`${library.getLibraryPath()}/package.json`, JSON.stringify(packageJSON, null, 4));
 }
 
 function mkdirSync(path) {

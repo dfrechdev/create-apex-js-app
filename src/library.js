@@ -1,10 +1,11 @@
 const commander = require('commander');
 const semverRegex = require('semver-regex');
 const inquirer = require('inquirer');
-const logUtil = require('./logUtil');
-const fileUtil = require('./fileUtil');
-const npmUtil = require('./npmUtil');
+const logger = require('./logger');
+const filesHandler = require('./filesHandler');
+const npmHandler = require('./npmHandler');
 const pkgJson = require('../package.json');
+const path = require('path');
 
 class Library {
     constructor(execPath, currPath, templateName) {
@@ -20,11 +21,11 @@ class Library {
     }
 
     getLibraryPath() {
-        return `${this.currPath}/${this.name}`;
+        return path.join(this.currPath, this.name);
     }
 
     getTemplatePath() {
-        return `${this.execPath}/templates/${this.templateName}`;
+        return path.join(this.execPath, templates, this.templateName);
     }
 
     setQuestions() {
@@ -71,64 +72,64 @@ class Library {
         }
 
         if (typeof this.name === 'undefined') {
-            logUtil.logError('Error: Please specify a name for the library you want to create!');
-            logUtil.logInfo('See create-apex-js-lib --help for more information.');
+            logger.logError('Error: Please specify a name for the library you want to create!');
+            logger.logInfo('See create-apex-js-lib --help for more information.');
             process.exit(1);
         }
     }
 
     create() {
-        logUtil.logWelcomeMsg(this);
+        logger.logWelcomeMsg(this);
 
         inquirer.prompt(this.questions).then((answers) => {
-            logUtil.log('\ngreat, setting up your project now ...\n');
+            logger.log('\ngreat, setting up your project now ...\n');
 
             this.code = answers['library-code'];
             this.version = answers['initial-version'];
 
             try {
-                logUtil.logInfo('creating directory');
-                fileUtil.mkdirSync(this.getLibraryPath());
-                logUtil.logSuccess('done\n');
+                logger.logInfo('creating directory');
+                filesHandler.mkdirSync(this.getLibraryPath());
+                logger.logSuccess('done\n');
             } catch (e) {
-                logUtil.logError('Error during directory creation: ', e);
+                logger.logError('Error during directory creation: ', e);
                 process.exit(1);
             }
 
             try {
-                logUtil.logInfo('copying project template');
-                fileUtil.createDirectoryContents(this.getTemplatePath(), this.getLibraryPath());
-                logUtil.logSuccess('done\n');
+                logger.logInfo('copying project template');
+                filesHandler.createDirectoryContents(this.getTemplatePath(), this.getLibraryPath());
+                logger.logSuccess('done\n');
             } catch (e) {
-                logUtil.logError('Error while copying the template: ', e);
+                logger.logError('Error while copying the template: ', e);
                 process.exit(1);
             }
 
             try {
-                logUtil.logInfo('setting project details');
-                fileUtil.writeProjectDetails(this);
-                logUtil.logSuccess('done\n');
+                logger.logInfo('setting project details');
+                filesHandler.writeProjectDetails(this);
+                logger.logSuccess('done\n');
             } catch (e) {
-                logUtil.logError('Unable to set project details: ', e);
+                logger.logError('Unable to set project details: ', e);
                 process.exit(1);
             }
 
             if (this.installDependencies) {
                 try {
-                    logUtil.logInfo('installing dependencies');
-                    npmUtil.installDependencies(this).then(() => {
-                        logUtil.logSuccess('done');
-                        logUtil.logLibraryCreatedMsg(this);
+                    logger.logInfo('installing dependencies');
+                    npmHandler.installDependencies(this).then(() => {
+                        logger.logSuccess('done');
+                        logger.logLibraryCreatedMsg(this);
                     });
                 } catch (e) {
-                    logUtil.logError('Unable to set project details: ', e);
+                    logger.logError('Unable to set project details: ', e);
                     process.exit(1);
                 }
             } else {
-                logUtil.logWarning(
+                logger.logWarning(
                     'Your dependencies have not been installed. Please run "npm install" inside of your project.\n'
                 );
-                logUtil.logLibraryCreatedMsg(this);
+                logger.logLibraryCreatedMsg(this);
             }
         });
     }

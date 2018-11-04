@@ -1,10 +1,11 @@
 #! /usr/bin/env node
-const Library = require("./src/library.js");
-const fileUtil = require("./src/fileUtil");
-const npmUtil = require("./src/npmUtil");
+const Library = require('./src/library.js');
+const exececutionDirectory = __dirname;
+const currentDirectory = process.cwd();
+const templateName = 'javascript-starter';
 
 // create library object
-let library = new Library(__dirname, process.cwd(), "javascript-starter");
+let library = new Library(exececutionDirectory, currentDirectory, templateName);
 
 // parse the arguments
 library.parseProgram();
