@@ -4,7 +4,7 @@
 
 -   All JavaScript code is transpiled to ES5 syntax
 -   Language features that are not part of ES5 and cannot be transpiled (eg. Promise, Map, Set, ...) will be automatically polyfilled if they are used in your code.
--   In development mode, source maps are created inline within the bundle file in order to debug your transfomed code in the browser
+-   In development mode, source maps are created inline within the bundle file in order to debug your transformed code in the browser
 -   ESLint will statically check the source code with the rules as defined by the airbnb guide for JavaScript (see https://github.com/airbnb/javascript).
 -   CSS files that are imported into the JavaScript source files will be extracted autoprefixed into a seperate CSS file
 -   All code is minified and shortened
