@@ -1,0 +1,32 @@
+{
+    "name": "app710",
+    "version": "1.0.0",
+    "description": "Generator to quickly bootstrap a JavaScript library for an APEX application",
+    "main": "index.js",
+    "scripts": {},
+    "bin": {
+        "create-apex-js-lib": "./index.js"
+    },
+    "keywords": [
+        "oracle",
+        "apex",
+        "javascript",
+        "library",
+        "modules"
+    ],
+    "devDependencies": {
+        "chalk": "^2.4.1",
+        "commander": "^2.19.0",
+        "cross-spawn": "^6.0.5",
+        "inquirer": "^6.2.0",
+        "log-symbols": "^2.2.0",
+        "semver-regex": "^2.0.0"
+    },
+    "dependencies": {},
+    "author": {
+        "name": "Daniel Frech",
+        "email": "dfrechdev@gmail.com"
+    },
+    "license": "MIT",
+    "libraryCode": "app710"
+}
