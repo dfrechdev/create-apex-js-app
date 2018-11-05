@@ -1,16 +1,18 @@
 # create-apex-js-lib
 
-"create-apex-js-lib" allows you to quickly bootstrap a JavaScript project for APEX, that bundles all your source code into a library. By using modern build tools, it will transform your source code in the following ways:
+## Introduction
 
--   All JavaScript code is bundled into one file.
--   All JavaScript code is transpiled to ES5 syntax by default.
--   Language features that are not part of ES5 and cannot be transpiled (eg. Promise, Map, Set, ...) are automatically polyfilled if you use them in your code.
--   In development mode, source maps are created inline within the bundle file in order to debug your transformed code in the browser
--   ESLint will statically check the source code with the rules as defined by the airbnb guide for JavaScript (see https://github.com/airbnb/javascript).
--   CSS files that are imported into the JavaScript source files will be extracted autoprefixed into a seperate CSS file
+create-apex-js-lib bootstraps a JavaScript project for APEX, that bundles all your source code into a library. During the bundleing of your library, the source code is transformed in the following ways:
+
+-   All JavaScript code is bundled into one file
+-   All JavaScript code is transpiled to ES5 syntax
+-   Language features that are not part of ES5 and cannot be transpiled (eg. Promise, Map, Set, ...) are automatically polyfilled if you use them in your code
+-   In development mode, source maps are created inline within the bundle file to ease debugging in the browsers development console
+-   ESLint statically checks the source code with the "eslint:recommended" ruleset
+-   CSS files that are imported into the JavaScript source files are extracted with vendor prefixes added into a seperate CSS file
 -   All code is minified and shortened
 
-The result of the build process is a JavaScript bundle that contains your transpiled source code with the dependencies and all the required polyfills. This file can be used in APEX and will expose your code in one library variable to your application.
+The result of the build process is a JavaScript bundle file, that contains your transpiled source code with the dependencies and all the required polyfills, as well as a CSS file that included the CSS code of all imported CSS files. The bundled file can be used in APEX and exposes your code in one library variable to your application.
 
 All default settings can be changed according to your need after you have created the library.
 
@@ -21,9 +23,7 @@ To create your JavaScript library for APEX please make sure you have the follwin
 -   node.js >= 8.9.0
 -   npm >= 5.2.0
 
-While lower versions of npm likely also work, it is suggested to upgrade npm to version 6, as a lot of security issues have been addressed in this version. To upgrade, simply use "npm i -g npm".
-
-Additionally, the following optional tools are recommended for a better development experience:
+In addition, the following optional tools are recommended for a better development experience:
 
 -   Visual Studio Code
 -   Prettier Plugin for Visual Studio Code (a configuration file for Prettier is included)
@@ -36,12 +36,24 @@ To create your JavaScript library for APEX, run the following command in your sh
 npx create-apex-js-lib <library-name>
 ```
 
-This will download and run the project generator in one step, without leaving anything installed on your machine from the generator project. Alternatively, you can also install the package and run it seperately:
+This will download and run the project generator in one step, without leaving anything installed on your machine from the generator project.
+
+You can also use a specific version for the generation of your library if you wish:
+
+```bash
+npx create-apex-js-lib@1.0.1 <library-name>
+```
+
+This uses version 1.0.1 of the project to create your library.
+
+Alternatively, you can also install the package globally and run it seperately:
 
 ```bash
 npm i -g create-apex-library
 create-apex-library <library-name>
 ```
+
+Please note, that if you are using this way, you need to manually update the create-apex-js-lib project, in order to create your library with the newest version.
 
 ### Options
 
@@ -99,9 +111,9 @@ You can change your build to your needs by changing the following configuration 
 
 -   [package.json](https://docs.npmjs.com/files/package.json): Root configuration file of your project. Includes the name of your library, the exposed library code, the version of your library and many more.
 -   [rollup.config.js](https://rollupjs.org/guide/en): Configuration file for the bundle process of your library
--   [.eslintrc.json](https://eslint.org/docs/user-guide/configuring): Settings file for ESLint. By default the predefined [airbnb](https://github.com/airbnb/javascript) rules are used for ESlint. If you want to use another set, you can change it in this configuration file.
--   .eslintignore: Files that should be ignroed by ESLint
+-   [.eslintrc.json](https://eslint.org/docs/user-guide/configuring): Settings file for ESLint. By default the predefined [eslint:recommended](https://eslint.org/docs/rules/) rules are used for ESlint. If you want to use another set, you can change it in this configuration file. The .eslintignore file in addition includes all the files that should be ignored by ESLint
 -   [.prettierrc](https://github.com/prettier/prettier): Rules for the Prettier extension in VSCode
+-   [jsdoc.conf](http://usejsdoc.org/about-configuring-jsdoc.html): Configuration file for documentation creation with JSDoc
 
 ### Externals
 

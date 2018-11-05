@@ -1,9 +1,10 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "node": true
     },
-    "extends": "airbnb",
+    "extends": "eslint:recommended",
     "parserOptions": {
         "sourceType": "module"
     },
@@ -11,17 +12,6 @@
         "apex": false
     },
     "rules": {
-        "no-console": [
-            "warn"
-        ],
-        "indent": 0,
-        "linebreak-style": 0,
-        "arrow-body-style": 0,
-        "implicit-arrow-linebreak": 0,
-        "wrap-iife": 0,
-        "max-len": 0,
-        "import/prefer-default-export": 0,
-        "import/no-unresolved": 0,
-        "import/newline-after-import": 0
+        "no-console": ["warn"]
     }
 }

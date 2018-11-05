@@ -1,7 +1,6 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
-import uglifyES from 'rollup-plugin-uglify-es';
 import postcss from 'rollup-plugin-postcss';
 import cssnano from 'cssnano';
 import autoprefixer from 'autoprefixer';
@@ -28,8 +27,8 @@ export default [
             replace({
                 include: './src/main.js',
                 values: {
-                    PROJECT_NAME: process.env.npm_package_name,
-                    PROJECT_VERSION: process.env.npm_package_version,
+                    NPM_PACKAGE_PROJECT_NAME: process.env.npm_package_name,
+                    NPM_PACKAGE_PROJECT_VERSION: process.env.npm_package_version,
                 },
             }),
             postcss({

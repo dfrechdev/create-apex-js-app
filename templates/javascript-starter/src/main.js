@@ -4,12 +4,9 @@
 
 /**
  * @description Information about the project
- * => the actual name and version will be replaced during your build
+ * => the actual name and version will be replaced during the build with the values from the package.json file
  */
-export const projectInfo = {
-    name: 'PROJECT_NAME',
-    version: 'PROJECT_VERSION',
-};
+export const projectInfo = { name: 'NPM_PACKAGE_PROJECT_NAME', version: 'NPM_PACKAGE_PROJECT_VERSION' };
 
 /**
  * your code goes here
