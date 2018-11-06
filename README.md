@@ -2,7 +2,7 @@
 
 ## Introduction
 
-create-apex-js-lib bootstraps a JavaScript project for APEX, that bundles all your source code into a library. During the bundleing of your library, the source code is transformed in the following ways:
+create-apex-js-lib bootstraps a JavaScript project for APEX, that bundles all your source code into a library. During the process of bundling the library, your source code is transformed in the following ways:
 
 -   All JavaScript code is bundled into one file
 -   All JavaScript code is transpiled to ES5 syntax
@@ -23,7 +23,7 @@ To create your JavaScript library for APEX please make sure you have the follwin
 -   node.js >= 8.9.0
 -   npm >= 5.2.0
 
-In addition, the following optional tools are recommended for a better development experience:
+The following tools are optional but greatly enhance your development experience:
 
 -   Visual Studio Code
 -   Prettier Plugin for Visual Studio Code (a configuration file for Prettier is included)
@@ -36,7 +36,7 @@ To create your JavaScript library for APEX, run the following command in your sh
 npx create-apex-js-lib <library-name>
 ```
 
-This will download and run the project generator in one step, without leaving anything installed on your machine from the generator project.
+This will download and run the project generator in one step, without leaving anything installed on your machine from the generator application itself.
 
 You can also use a specific version for the generation of your library if you wish:
 
