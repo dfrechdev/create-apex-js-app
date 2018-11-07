@@ -119,19 +119,19 @@ You can change your build to your needs by changing the following configuration 
 
 Externals are parts of your library, that will not be included in your bundle, as they are already loaded on your page. By default, the apex and jQuery libraries are excluded from the bundle process.
 
-#### "apex" library
+#### apex
 
-The apex library is passed to your library as an argument when it is loaded. You therefore need to make sure, that your library is loaded after the apex library.
+The apex JavaScript API is passed to your library as an argument when it is loaded. You therefore need to ensure, that your library is loaded after the apex library.
 
 #### jQuery
 
-The jQuery library is included in the apex library and can be referenced with "apex.jQuery". Additionally, you can map "apex.jQuery" to the "$" variable in your files if you wish such as:
+The jQuery library is included in the apex JavaScript API and can be referenced with "apex.jQuery". Additionally, you can map "apex.jQuery" to the "$" variable in your files if you wish such as:
 
 ```javascript
 const $ = apex.jQuery;
 ```
 
-As you are working in your own namespace, it is safe to override the $ variable. This way you can make sure that you always access the jQuery library from the apex library while beeing able to continue to use the "$" shortcut.
+As you are working in your own namespace, it is safe to override the $ variable. This way you ensure that you always access the jQuery library from the apex JavaScript API while beeing able to continue to use the "$" shortcut.
 
 #### Other
 
