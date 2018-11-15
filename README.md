@@ -30,7 +30,7 @@ The following tools are optional but greatly enhance your development experience
 -   Visual Studio Code
 -   Prettier Plugin for Visual Studio Code (a configuration file for Prettier is included)
 
-## Installation
+## Create your library
 
 To create your JavaScript library for APEX, run the following command in your shell with your library name replaced (the library name may only include letters, numbers, underscores and hashes):
 
@@ -96,7 +96,7 @@ During the creation of your library, you will be asked a few additional question
 
 -   **Initial version**: Define the initial version of your library. The version needs to follow the [semantic versioning](https://semver.org/) rules. By default, version 1.0.0 is used.
 
-## Usage
+## How to use your library
 
 The project contains a "src" folder with a file called "main.js". This is the default entry point for the bundle generation and the place where your JavaScript code should go. You can import any node package that you have installed or local modules that you have created in seperate files. All exported variables, objects or functions within the main.js file will be accessible in your library. Check the "examples" folder in your project to see how you can add your code.
 
@@ -130,7 +130,7 @@ npm run build
 
 This will create JSDoc documentation and the bundled JavaScript and CSS files, but without source maps. With the "build" command, only the build is run and no watcher for further changes is started.
 
-## Configuration
+## Configuring your library
 
 You can change your build to your needs by changing the following configuration files:
 
