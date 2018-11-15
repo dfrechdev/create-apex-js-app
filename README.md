@@ -93,7 +93,7 @@ npx create-apex-js-lib myLib --template githubUser/apexjs-template-my-lib
 # load tag 0.1.4 of the template apexjs-template-my-lib from your local git server with ssh
 npx create-apex-js-lib myLib --template git+ssh://git@mygitserver.com:apexjs-template-my-lib.git#0.1.4 
 ```
-Check you below section on how to [create your own template](## Create your own template) for further details.
+Check you below section on how to [create your own template](##create-your-own-template) for further details.
 
 ### Questions during creation of library
 
