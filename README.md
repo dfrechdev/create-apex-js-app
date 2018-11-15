@@ -1,5 +1,7 @@
 # create-apex-js-lib
 
+**This project is currently in development and will be made available for creating your libraries as described below soon.  Contact me, if you want to receive an update as soon as the project is released.**
+
 ## Introduction
 
 This tool bootstraps a project, that allows you to create your own JavaScript library for APEX. The generated project includes a full build process, that transformes your source code in the following ways:
@@ -16,7 +18,7 @@ The result of the build process is a JavaScript bundle file, that contains the t
 
 All default settings can be changed according to your need after you have created the library.
 
-## Prerequisites
+## Before you start
 
 Before you start, please make sure you have the follwing installed:
 
@@ -28,7 +30,7 @@ The following tools are optional, but greatly enhance your development experienc
 -   Visual Studio Code
 -   Prettier Plugin for Visual Studio Code (a configuration file for Prettier is included)
 
-## Installation
+## Create your library
 
 To create your JavaScript library for APEX, run the following command in your shell with your library name replaced (the library name may only include letters, numbers, underscores and hashes):
 
@@ -57,11 +59,41 @@ Please note that if you are installing the package globally, you need to manuall
 
 ### Options
 
-By default, the required dependencies for your library are installed during the creation. If you do not want this and rather install the dependencies at a later point yourself, you can achieve this by running:
+#### --noinstall
+
+By default, the required dependencies for your library are installed during the creation of your project. If you do not want this and rather install the dependencies yourself at a later point, you can use the --noinstall flag.
 
 ```bash
 npx create-apex-js-lib <library-name> --noinstall
 ```
+Before you can start bundling your library, you then need to install the dependencies later by running the follwing command from the route of your project:
+```bash
+npm install
+```
+
+#### --template <templateName>
+
+If you want to create your project with a different template, you can define the template at runtime by using the --template option:
+
+```bash
+npx create-apex-js-lib <library-name> --template <templateName>
+```
+The template name can either be a npm package or a github repository. Below are all examples of possible calls with the template option:
+
+```bash
+# load the template from the npm package apexjs-template-my-lib 
+npx create-apex-js-lib myLib --template apexjs-template-my-lib 
+
+# load the template from the npm package apexjs-template-my-lib with the version 0.1.4
+npx create-apex-js-lib myLib --template apexjs-template-my-lib@0.1.4 
+
+# load the template from the github project apexjs-template-my-lib of user githubUser
+npx create-apex-js-lib myLib --template githubUser/apexjs-template-my-lib
+
+# load tag 0.1.4 of the template apexjs-template-my-lib from your local git server with ssh
+npx create-apex-js-lib myLib --template git+ssh://git@mygitserver.com:apexjs-template-my-lib.git#0.1.4 
+```
+Check you below section on how to [create your own template](#create-your-own-template) for further details.
 
 ### Questions during creation of library
 
@@ -73,7 +105,7 @@ During the creation of your library, you will be asked a few additional question
 
 -   **output format**: The output format defines the module you want to create. By default, the library is created as an IIFE (Immediately Invoked Function Execution), which is s good fit for browsers. If you want to use your library in other modules/libraries however, you might want to choose another format.
 
-## Usage
+## How to use your library
 
 The generated project contains a `src` folder with a file called `main.js`. This is the default entry point for the bundle generation and the place where your JavaScript code should go. You can import any node package that you have installed or local modules that you have created in seperate files. All exported variables, objects or functions within the main.js file will be accessible in your library. Check the `examples` folder in your project to see how you can add your code.
 
@@ -107,7 +139,7 @@ npm run build
 
 This will create JSDoc documentation and the bundled JavaScript and CSS files, but without source maps. With the `build` command, only the build is run and no watcher for further changes is started.
 
-## Configuration
+## Configuring your library
 
 You can change your build to your needs by changing the following configuration files:
 
@@ -123,7 +155,7 @@ Externals are parts of your library, that should not be included in your bundle,
 
 #### apex
 
-The apex library is passed to your library as an argument when it is loaded. You therefore need to make sure, that your library is loaded after the apex library.
+The apex JavaScript API is passed to your library as an argument when it is loaded. You therefore need to ensure, that your library is loaded after the apex library.
 
 #### jQuery
 
@@ -138,6 +170,19 @@ As you are working in your own namespace, it is safe to override the `$` variabl
 #### Other
 
 Additional external libraries that are already available on your site and should not be bundled can be added to the rollup.config.js file.
+
+## Create your own template
+
+When using this tool, chances are that at some point you want to change some of the predefined settings and generate your libraries from your own, customized template. By default, the template [apexjs-template-js-lib](https://github.com/dfrechdev/apexjs-template-js-lib) is used for generating the libary. To create your own template, the best way to do this is to fork the default template repository and create your template from that. Chechkout the guide on [Forking Projects](https://guides.github.com/activities/forking/) if you are not familiar with forking. If you do not want to have your template publicly available, you can just clone the template and then remove the link to the git repository as well.
+
+Having created your copy of the default template, there are only a few things that you need to follow, in order to be able to use it from this tool:
+
+1. The `package.json` file of your template project, needs to include all the dependencies required during the creation of a new library with your template. Please note, that they need to be added as dependencies and not devDependencies!
+2. Your template needs to expose a method called `setupLibrary()` in the `index.js` file in the root of your template. This method will be called during the generation of the library and should include all customization that want to apply to your template during the creation of a new library.
+3. Once the above method has completed, there needs to be a folder called `template` in the root of your template. All files contained in that folder will be copied to the new library during the creation.
+4. The template project should not contain the `node_modules` folder. Make sure, that this folder is added to the `.gitignore` file. All dependencies listed in your `package.json` will be installed during the creation of a new library.
+
+That's all you need to do, to start creating libraries with your own template!
 
 ## Author
 
