@@ -1,6 +1,6 @@
 # create-apex-js-lib
 
-** This project is currently in development and will be made available for creating your libraries as described below soon.  Contact me, if you want to receive an update as soon as the project is relaesed. **
+**This project is currently in development and will be made available for creating your libraries as described below soon.  Contact me, if you want to receive an update as soon as the project is relaesed.**
 
 ## Introduction
 
