@@ -81,12 +81,19 @@ npx create-apex-js-lib <library-name> --template <templateName>
 The template name can either be a npm package or a github repository. Below are all examples of possible calls with the template option:
 
 ```bash
-npx create-apex-js-lib myLib --template apexjs-template-my-lib # loads the template from the npm package apexjs-template-my-lib 
-npx create-apex-js-lib myLib --template apexjs-template-my-lib@0.1.4 # loads the template from the npm package apexjs-template-my-lib with the version 0.1.4
-npx create-apex-js-lib myLib --template githubUser/apexjs-template-my-lib # loads the template from the github project apexjs-template-my-lib of user githubUser
-npx create-apex-js-lib myLib --template git+ssh://git@mygitserver.com:apexjs-template-my-lib.git#0.1.4 # loads the tag 0.1.4 of the template apexjs-template-my-lib from the local git server with ssh
+# load the template from the npm package apexjs-template-my-lib 
+npx create-apex-js-lib myLib --template apexjs-template-my-lib 
+
+# load the template from the npm package apexjs-template-my-lib with the version 0.1.4
+npx create-apex-js-lib myLib --template apexjs-template-my-lib@0.1.4 
+
+# load the template from the github project apexjs-template-my-lib of user githubUser
+npx create-apex-js-lib myLib --template githubUser/apexjs-template-my-lib
+
+# load tag 0.1.4 of the template apexjs-template-my-lib from your local git server with ssh
+npx create-apex-js-lib myLib --template git+ssh://git@mygitserver.com:apexjs-template-my-lib.git#0.1.4 
 ```
-See below section for more details of how you can create your own template.
+Check you below section on how to [create your own template](## Create your own template) for further details.
 
 ### Questions during creation of library
 
