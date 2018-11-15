@@ -2,6 +2,8 @@
 
 **This project is currently in development and will be made available for creating your libraries as described below soon.  Contact me, if you want to receive an update as soon as the project is relaesed.**
 
+[![Build Status](https://travis-ci.org/dfrechdev/create-apex-js-lib.svg?branch=master)](https://travis-ci.org/dfrechdev/create-apex-js-lib)
+
 ## Introduction
 
 create-apex-js-lib bootstraps a JavaScript project for APEX, that bundles all your source code into a library. During the process of bundling the library, your source code is transformed in the following ways:
