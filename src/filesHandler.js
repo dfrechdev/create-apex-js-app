@@ -21,7 +21,6 @@ function createDirectoryContents(templatePath, projectPath) {
 }
 
 function writeLibrayDetails(library) {
-    console.log(`setting package.json in "${library.getLibraryPath()}/package.json"`);
     const packageJsonPath = `${library.getLibraryPath()}/package.json`;
     let packageJSON = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
     packageJSON.name = library.name;

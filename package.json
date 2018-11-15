@@ -1,7 +1,7 @@
 {
-    "name": "create-apex-js-lib",
-    "version": "1.0.1-alpha.3",
-    "description": "Generator to bootstrap a JavaScript library for an APEX application",
+    "name": "create-apex-js-app",
+    "version": "0.0.1",
+    "description": "Generator to bootstrap a JavaScript app for a APEX application",
     "main": "index.js",
     "scripts": {},
     "bin": {
@@ -17,17 +17,15 @@
         "chalk": "^2.4.1",
         "commander": "^2.19.0",
         "cross-spawn": "^6.0.5",
-        "inquirer": "^6.2.0",
-        "log-symbols": "^2.2.0",
-        "semver-regex": "^2.0.0"
+        "log-symbols": "^2.2.0"
     },
     "devDependencies": {},
     "repository": {
         "type": "git",
-        "url": "https://github.com/dfrechdev/create-apex-js-lib"
+        "url": "https://github.com/dfrechdev/create-apex-js-app"
     },
     "bugs": {
-        "url": "https://github.com/dfrechdev/create-apex-js-lib/issues"
+        "url": "https://github.com/dfrechdev/create-apex-js-app/issues"
     },
     "author": {
         "name": "Daniel Frech",

@@ -2,28 +2,28 @@
 
 ## Introduction
 
-create-apex-js-lib bootstraps a JavaScript project for APEX, that bundles all your source code into a library. During the process of bundling the library, your source code is transformed in the following ways:
+This tool bootstraps a project, that allows you to create your own JavaScript library for APEX. The generated project includes a full build process, that transformes your source code in the following ways:
 
--   All JavaScript code is bundled into one file
--   All JavaScript code is transpiled to ES5 syntax
--   Language features that are not part of ES5 and cannot be transpiled (eg. Promise, Map, Set, ...) are automatically polyfilled if you use them in your code
--   In development mode, source maps are created inline within the bundle file to ease debugging in the browsers development console
--   ESLint statically checks the source code with the "eslint:recommended" ruleset
+-   all JavaScript code is bundled into one file
+-   all JavaScript code is transpiled to ES5 syntax
+-   in development mode, source maps are created inline within the bundle file to ease debugging in the browsers development console
+-   ESLint statically checks the source code with the `eslint:recommended` ruleset
 -   CSS files that are imported into the JavaScript source files are extracted with vendor prefixes added into a seperate CSS file
--   All code is minified and shortened
+-   all transformed code is minified and shortened
+-   language features that are not part of ES5 and cannot be transpiled (eg. Promise, Map, Set, ...) and are use in the code are polyfilled
 
-The result of the build process is a JavaScript bundle file, that contains your transpiled source code with the dependencies and all the required polyfills, as well as a CSS file that included the CSS code of all imported CSS files. The bundled file can be used in APEX and exposes your code in one library variable to your application.
+The result of the build process is a JavaScript bundle file, that contains the transpiled source code with the dependencies and required polyfills, as well as a CSS file that includes the code of all imported CSS files. The bundled file can be used in APEX and exposes the source code in one library variable to the application.
 
 All default settings can be changed according to your need after you have created the library.
 
 ## Prerequisites
 
-To create your JavaScript library for APEX please make sure you have the follwing installed:
+Before you start, please make sure you have the follwing installed:
 
 -   node.js >= 8.9.0
 -   npm >= 5.2.0
 
-The following tools are optional but greatly enhance your development experience:
+The following tools are optional, but greatly enhance your development experience:
 
 -   Visual Studio Code
 -   Prettier Plugin for Visual Studio Code (a configuration file for Prettier is included)
@@ -41,10 +41,10 @@ This will download and run the project generator in one step, without leaving an
 You can also use a specific version for the generation of your library if you wish:
 
 ```bash
-npx create-apex-js-lib@1.0.1 <library-name>
+npx create-apex-js-lib@0.0.1 <library-name>
 ```
 
-This uses version 1.0.1 of the project to create your library.
+This uses version 0.0.1 of the project to create your library.
 
 Alternatively, you can also install the package globally and run it seperately:
 
@@ -53,7 +53,7 @@ npm i -g create-apex-library
 create-apex-library <library-name>
 ```
 
-Please note, that if you are using this way, you need to manually update the create-apex-js-lib project, in order to create your library with the newest version.
+Please note that if you are installing the package globally, you need to manually update it. Also, any subsequent run, event with npx, will use the globally installed package, rather than downloading it again.
 
 ### Options
 
@@ -71,9 +71,11 @@ During the creation of your library, you will be asked a few additional question
 
 -   **Initial version**: Define the initial version of your library. The version needs to follow the [semantic versioning](https://semver.org/) rules. By default, version 1.0.0 is used.
 
+-   **output format**: The output format defines the module you want to create. By default, the library is created as an IIFE (Immediately Invoked Function Execution), which is s good fit for browsers. If you want to use your library in other modules/libraries however, you might want to choose another format.
+
 ## Usage
 
-The project contains a "src" folder with a file called "main.js". This is the default entry point for the bundle generation and the place where your JavaScript code should go. You can import any node package that you have installed or local modules that you have created in seperate files. All exported variables, objects or functions within the main.js file will be accessible in your library. Check the "examples" folder in your project to see how you can add your code.
+The generated project contains a `src` folder with a file called `main.js`. This is the default entry point for the bundle generation and the place where your JavaScript code should go. You can import any node package that you have installed or local modules that you have created in seperate files. All exported variables, objects or functions within the main.js file will be accessible in your library. Check the `examples` folder in your project to see how you can add your code.
 
 ### Development build
 
@@ -83,7 +85,7 @@ To create a bundle for development, issue the following command from the root of
 npm run dev
 ```
 
-This will create the bundled JavaScript and CSS files with your transformed source code in the "dist" folder. Further it will watch the source folder for changes and will rebundle the file whenever a change occurs.
+This will create the bundled JavaScript and CSS files with your transformed source code in the `dist` folder. Further it will watch the source folder for changes and will rebundle the file whenever a change occurs.
 
 ### Create documentation
 
@@ -93,7 +95,7 @@ To create the JSDoc documentation from your source code, run the follwing comman
 npm run doc
 ```
 
-This will create the documentation in the "dist/doc" folder of your project.
+This will create the documentation in the `dist/doc` folder of your project.
 
 ### Prodution build
 
@@ -103,7 +105,7 @@ To bundle everything for production, issue the following command:
 npm run build
 ```
 
-This will create JSDoc documentation and the bundled JavaScript and CSS files, but without source maps. With the "build" command, only the build is run and no watcher for further changes is started.
+This will create JSDoc documentation and the bundled JavaScript and CSS files, but without source maps. With the `build` command, only the build is run and no watcher for further changes is started.
 
 ## Configuration
 
@@ -117,25 +119,25 @@ You can change your build to your needs by changing the following configuration 
 
 ### Externals
 
-Externals are parts of your library, that will not be included in your bundle, as they are already loaded on your page. By default, the apex and jQuery libraries are excluded from the bundle process.
+Externals are parts of your library, that should not be included in your bundle, as they are already loaded on your page. By default, the apex and jQuery libraries are excluded from the bundle process.
 
-#### "apex" library
+#### apex
 
 The apex library is passed to your library as an argument when it is loaded. You therefore need to make sure, that your library is loaded after the apex library.
 
 #### jQuery
 
-The jQuery library is included in the apex library and can be referenced with "apex.jQuery". Additionally, you can map "apex.jQuery" to the "$" variable in your files if you wish such as:
+The jQuery library is included in the apex library and can be referenced with `apex.jQuery`. Additionally, you can map `apex.jQuery` to the `$` variable in your files if you wish such as:
 
 ```javascript
 const $ = apex.jQuery;
 ```
 
-As you are working in your own namespace, it is safe to override the $ variable. This way you can make sure that you always access the jQuery library from the apex library while beeing able to continue to use the "$" shortcut.
+As you are working in your own namespace, it is safe to override the `$` variable. This way you can make sure that you always access the jQuery library from the apex library while beeing able to continue to use the `$` shortcut.
 
 #### Other
 
-For other external libraries that are already available on your site and you do not want to add to your library as a dependency, you can extend the configuration. In the rollup.config.js file you will find a "globals" and "external" attribute that you can amend to your needs.
+Additional external libraries that are already available on your site and should not be bundled can be added to the rollup.config.js file.
 
 ## Author
 
