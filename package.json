@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {},
     "bin": {
-        "create-apex-js-lib": "./index.js"
+        "create-apex-js-app": "./index.js"
     },
     "keywords": [
         "oracle",
@@ -14,6 +14,7 @@
         "library"
     ],
     "dependencies": {
+        "apexjs-template-js-lib": "0.0.1",
         "chalk": "^2.4.1",
         "commander": "^2.19.0",
         "cross-spawn": "^6.0.5",

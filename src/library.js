@@ -6,11 +6,11 @@ const pkgJson = require('../package.json');
 const path = require('path');
 
 class Library {
-    constructor(execPath, currPath, templatePackage) {
+    constructor(execPath, currPath) {
         this.execPath = execPath;
         this.currPath = currPath;
-        this.templatePackage = templatePackage;
-        this.installDependencies = true;
+        this.installDependencies;
+        this.templatePackage;
         this.name;
         this.code;
         this.version;
@@ -44,7 +44,7 @@ class Library {
 
         this.templatePackage = this.program.templatePackage
             ? this.program.templatePackage
-            : this.templatePackage;
+            : 'apexjs-template-js-lib';
 
         this.installDependencies = this.program.noinstall ? false : true;
 
@@ -62,7 +62,7 @@ class Library {
             .then(() => {
                 this.createLibraryDirectorySync();
                 this.copyTemplateFilesSync();
-                const template = require('apex-js-lib-template-js');
+                const template = require(this.templatePackage);
                 return template.setupLibrary(this, logger);
             })
             .then(() => {
