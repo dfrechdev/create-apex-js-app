@@ -1,16 +1,16 @@
 #! /usr/bin/env node
-const Library = require('./src/library.js');
-const exececutionDirectory = __dirname;
-const currentDirectory = process.cwd();
+const ApexJsApp = require('./src/ApexJsApp.js');
 
-// clear the console
+// clear console
 process.stdout.write('\033c');
 
-// create library object
-let library = new Library(exececutionDirectory, currentDirectory);
+// create new app object
+const executionPath = __dirname;
+const currentPath = process.cwd();
+let app = new ApexJsApp(executionPath, currentPath);
 
-// parse the arguments
-library.parseProgram();
+// parse command line arguments
+app.setProgram();
 
-// start asking qestions and creating the libary
-library.create();
+// execute all steps to create the app
+app.create();

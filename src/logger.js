@@ -1,8 +1,12 @@
 const logSymbols = require('log-symbols');
 const chalk = require('chalk');
 
+/**
+ * @exports logger
+ * @description logging methods for the app creation
+ */
 module.exports = {
-    logLibraryCreatedMsg,
+    logAppCreatedMsg,
     logWelcomeMsg,
     logSuccess,
     logError,
@@ -11,42 +15,30 @@ module.exports = {
     log
 };
 
-/**
- * @function logLibraryCreatedMsg
- * @param {*} library - Library object
- */
-function logLibraryCreatedMsg(library) {
-    console.log(
-        logSymbols.success,
-        chalk.green(`created library "${library.name}" at "${library.getLibraryPath()}".\n`)
-    );
+function logAppCreatedMsg(app) {
+    console.log(logSymbols.success, chalk.green(`created app "${app.name}" at "${app.getAppPath()}".\n`));
 
     console.log('Inside that directory you can run the following commands:\n');
-    console.log(chalk.cyan('$ npm run doc'));
-    console.log('Creates the documentation from your source files in the distribution folder.\n');
     console.log(chalk.cyan('$ npm run dev'));
-    console.log(
-        'Watches your source folder and bundles the app with source maps into the distribution folder on every change.\n'
-    );
+    console.log('Watches the source folder and bundles the app for development on every change.\n');
+    console.log(chalk.cyan('$ npm run prod'));
+    console.log('Bundles the app for production.\n');
+    console.log(chalk.cyan('$ npm run doc'));
+    console.log('Creates JSDoc documentation from the source files.\n');
     console.log(chalk.cyan('npm run build'));
-    console.log(
-        'Bundles the app without source maps into the distribution folder and creates the documentations.\n'
-    );
+    console.log('Bundles the app for production and creates the documentation.\n');
     console.log('We suggest that you begin by typing:\n');
-    console.log(chalk.cyan('$ cd'), library.name);
+    console.log(chalk.cyan('$ cd'), app.name);
     console.log(chalk.cyan('$ npm run dev\n'));
     console.log(chalk.green('Happy coding!'));
 }
 
-/**
- * @function logWelcomeMsg
- */
-function logWelcomeMsg(library) {
+function logWelcomeMsg(app) {
     console.log('\n');
-    console.log(chalk.cyan.bold('Create your JavaScript library for APEX!\n'));
-    console.log(chalk.bold(logSymbols.info, 'Library name: ') + chalk.cyan(library.name) + '\n');
+    console.log(chalk.cyan.bold('Create your JavaScript app for APEX!\n'));
+    console.log(chalk.bold(logSymbols.info, 'app name: ') + chalk.cyan(app.name) + '\n');
 }
-// log functions
+
 function log(msg) {
     console.log(msg);
 }
@@ -60,5 +52,6 @@ function logWarning(msg) {
     console.log(logSymbols.warning, msg);
 }
 function logError(msg, err) {
-    console.log(logSymbols.error, msg, err);
+    console.log(logSymbols.error, chalk.red(msg));
+    err ? console.log(chalk.red(`${err.stack}`)) : null;
 }

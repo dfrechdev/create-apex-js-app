@@ -1,0 +1,66 @@
+const logger = require('./logger');
+const fsUtil = require('./fsUtil');
+const npmHandler = require('./npmHandler');
+
+/**
+ * @exports appCreation
+ * @description File that includes all the necessary steps during the creation of a new app
+ */
+module.exports = {
+    installTemplate,
+    installDependencies,
+    createAppDirectorySync,
+    copyTemplateFilesSync,
+    setupTemplate
+};
+
+function installTemplate(app) {
+    if (app.program.template) {
+        logger.logInfo(`installing template "${app.templateUrl}"`);
+        return npmHandler
+            .installPackage(app.templateUrl, app.execPath)
+            .then(() => logger.logSuccess('done\n'));
+    }
+    return Promise.resolve('done');
+}
+
+function installDependencies(app) {
+    if (app.program.noinstall) {
+        logger.logWarning(
+            'Your dependencies have not been installed. Please run "npm install" inside of your project.\n'
+        );
+        return Promise.resolve('done');
+    }
+    logger.logInfo('installing dependencies');
+    return npmHandler.installDependencies(app.getAppPath()).then(() => logger.logSuccess('done\n'));
+}
+
+function createAppDirectorySync(app) {
+    try {
+        logger.logInfo('creating app directory');
+        fsUtil.createDirectorySync(app.getAppPath());
+        logger.logSuccess('done\n');
+    } catch (e) {
+        logger.logError('Error during directory creation: ', e);
+        process.exit(1);
+    }
+}
+
+function copyTemplateFilesSync(app) {
+    try {
+        logger.logInfo('copying template files');
+        fsUtil.copyFiles(app.getTemplatePath(), app.getAppPath());
+        logger.logSuccess('done\n');
+    } catch (e) {
+        logger.logError('Error while copying the template files: ', e);
+        process.exit(1);
+    }
+}
+
+function setupTemplate(app) {
+    logger.logInfo('setting up template');
+    const template = require(app.templateName);
+    return template
+        .setupApp({ appName: app.name, appPath: app.getAppPath() })
+        .then(() => logger.logSuccess('done\n'));
+}

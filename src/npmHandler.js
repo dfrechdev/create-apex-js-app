@@ -1,17 +1,21 @@
 const spawn = require('cross-spawn');
+const path = require('path');
 
+/**
+ * @exports npmHandler
+ * @description File that includes method for npm commands
+ */
 module.exports = {
     installDependencies,
-    installPackage,
-    updatePackage
+    installPackage
 };
 
 /**
  * @function installDependencies
- * @description installs all dependencies from npm as specified in the templates package.json
- * @param {*} library - Library object
+ * @description Function to install all dependencies of a project
+ * @param {ApexJsApp} app
  */
-function installDependencies(library) {
+function installDependencies(executionPath) {
     return new Promise((resolve, reject) => {
         let command;
         let args;
@@ -19,7 +23,7 @@ function installDependencies(library) {
         command = 'npm';
         args = ['install', '--loglevel', 'error'];
 
-        const child = spawn(command, args, { cwd: `${library.getLibraryPath()}`, stdio: 'inherit' });
+        const child = spawn(command, args, { cwd: executionPath, stdio: 'inherit' });
         child.on('close', (code) => {
             if (code !== 0) {
                 reject({
@@ -35,7 +39,7 @@ function installDependencies(library) {
 /**
  * @function installPackage
  * @description installs a package from npm
- * @param {string} packageName - name of npm package
+ * @param {string} packageName - name of npm package or git repository url
  * @param {path} executionPath - directory in which the package should be installed
  */
 function installPackage(packageName, executionPath) {
@@ -44,63 +48,10 @@ function installPackage(packageName, executionPath) {
         let args;
 
         command = 'npm';
-        args = ['install', packageName];
+        args = ['--prefix', executionPath, 'install', packageName, '--no-save'];
 
-        const child = spawn(command, args, { cwd: `${executionPath}`, stdio: 'inherit' });
-        child.on('close', (code) => {
-            if (code !== 0) {
-                reject({
-                    command: `${command} ${args.join(' ')}`
-                });
-                return;
-            }
-            resolve('done');
-        });
-    });
-}
+        const child = spawn(command, args, { stdio: 'inherit' });
 
-/**
- * @function uninstallPackage
- * @description uninstalls a package from npm
- * @param {string} packageName - name of npm package
- * @param {path} executionPath - directory in which the package should be installed
- */
-function uninstallPackage(packageName, executionPath) {
-    return new Promise((resolve, reject) => {
-        let command;
-        let args;
-
-        command = 'npm';
-        args = ['uninstall', packageName];
-
-        const child = spawn(command, args, { cwd: `${executionPath}`, stdio: 'inherit' });
-        child.on('close', (code) => {
-            if (code !== 0) {
-                reject({
-                    command: `${command} ${args.join(' ')}`
-                });
-                return;
-            }
-            resolve('done');
-        });
-    });
-}
-
-/**
- * @function updatePackage
- * @description updates a package from npm
- * @param {string} packageName - name of npm package
- * @param {path} executionPath - directory in which the package should be installed
- */
-function updatePackage(packageName, executionPath) {
-    return new Promise((resolve, reject) => {
-        let command;
-        let args;
-
-        command = 'npm';
-        args = ['update', packageName];
-
-        const child = spawn(command, args, { cwd: `${executionPath}`, stdio: 'inherit' });
         child.on('close', (code) => {
             if (code !== 0) {
                 reject({

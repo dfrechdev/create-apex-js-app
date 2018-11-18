@@ -52,15 +52,6 @@ npx create-apex-js-app@0.0.1 <app-name>
 
 This uses version 0.0.1 of this tool to create your app.
 
-Alternatively, you can also install the package globally and run it separately:
-
-```bash
-npm i -g create-apex-js-app
-create-apex-js-app <app-name>
-```
-
-Please note, that if you install the package globally, you need to manually update it in the future. Also, any subsequent run, even with npx, will use the globally installed package, rather than downloading it again.
-
 ### Options
 
 #### --noinstall
@@ -85,7 +76,7 @@ If you want to create your app with a different template, you can define the tem
 npx create-apex-js-app <app-name> --template <templateName>
 ```
 
-The template name can either be a npm package or a github repository. Below are all examples of possible calls with the template option:
+The template name can either be a npm package or a github repository. Below are examples of possible calls with the template option:
 
 ```bash
 # load the template from the npm package apexjs-template-my-lib
@@ -94,14 +85,16 @@ npx create-apex-js-app myApp --template apexjs-template-my-lib
 # load the template from the npm package apexjs-template-my-lib with the version 0.1.4
 npx create-apex-js-app myApp --template apexjs-template-my-lib@0.1.4
 
-# load the template from the github project apexjs-template-my-lib of user githubUser
-npx create-apex-js-app myApp --template githubUser/apexjs-template-my-lib
+# load the template from the github repository "myTemplate" of user "gituser" via https
+npx create-apex-js-app myApp --template git+https://git@github.com/gituser/myTemplate.git
 
-# load tag 0.1.4 of the template apexjs-template-my-lib from your local git server with ssh
-npx create-apex-js-app myApp --template git+ssh://git@mygitserver.com:apexjs-template-my-lib.git#0.1.4
+# load tag 0.1.4 of the template myLocalTemplate from your local git url with ssh
+npx create-apex-js-app myApp --template git+ssh://git@my-local-git-url:myLocalTemplate.git#0.1.4
 ```
 
-Check you below section on how to [create your own template](#create-your-own-template) for further details.
+Please note, that while it is a possibility to install from a gib repository by calling "gituser/repository" only, this notation can not be used here. You need to provide the full git url as shown above.
+
+Check below section for more details on how to [create your own template](#create-your-own-template) .
 
 ### Questions during the creation
 
