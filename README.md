@@ -1,24 +1,23 @@
 # create-apex-js-app
 
-## Introduction
+This tool bootstraps a JavaScript app for your APEX application. By default, it uses the [apexjs-template-js-lib](https://github.com/dfrechdev/apexjs-template-js-lib) template, which allows you to create your own JavaScript library for APEX and includes a full build process.
 
-This tool bootstraps a JavaScript app for your APEX application. By default, it uses the [apexjs-template-js-lib](https://github.com/dfrechdev/apexjs-template-js-lib) template, which allows you to create your own JavaScript library for APEX and includes a full build process the transforms your source code in the following ways:
+## Benefits of using create-apex-js-app
+
+By using a standardized way to build your JavaScript code for APEX, you will boost the quality and reusability of your Javascript code. In detail, you will benefit from the following possibilities and transformations of your source code during the build process:
 
 -   all JavaScript code is bundled into one file
 -   all JavaScript code is transpiled to ES5 syntax
+-   language features that are not part of ES5 and cannot be transpiled (eg. Promise, Map, Set, ...) and are use in the code are polyfilled
+-   the target environment (supported browsers) of your build can be set in one place and define the result of the transpilation and polyfills
 -   in development mode, source maps are created inline within the bundle file to ease debugging in the browsers development console
 -   ESLint statically checks the source code with the `eslint:recommended` rule set
 -   CSS files that are imported into the JavaScript source files are extracted with vendor prefixes added into a separate CSS file
 -   all transformed code is minimized and shortened
--   language features that are not part of ES5 and cannot be transpiled (eg. Promise, Map, Set, ...) and are use in the code are polyfilled
 
 The result of the build process is a JavaScript bundle file, that contains the transpiled source code with the dependencies and required polyfills, as well as a CSS file that includes the code of all imported CSS files. The bundled file can be used in APEX and exposes the source code in one library variable to the application.
 
-All default settings can be changed according to your needs after you have created the app.
-
-## Benefits of using create-apex-js-app
-
-By using a standardized way to build your JavaScript code for APEX, you will boost the quality and reusability of your Javascript code. Check out my blog post at []() for a detailed look and full list of advantages.
+All default settings can be easily changed according to your needs, after you have created your app.
 
 ## Before you start
 
@@ -52,7 +51,7 @@ This uses version 0.0.1 of this tool to create your app.
 
 ### Options
 
-#### --noinstall
+#### -n / --noinstall
 
 By default, the required dependencies for your app are installed during the creation of your project. If you do not want this and rather install the dependencies yourself at a later point, you can use the --noinstall flag.
 
@@ -66,7 +65,7 @@ Before you can start bundling your app, you then need to install the dependencie
 npm install
 ```
 
-#### --template <templateName>
+#### -t / --template <templateName>
 
 If you want to create your app with a different template, you can define the template at runtime by using the --template option:
 
@@ -78,25 +77,25 @@ The template name can either be a npm package or a github repository. Below are 
 
 ```bash
 # load the template from the npm package apexjs-template-my-lib
-npx create-apex-js-app myApp --template apexjs-template-my-lib
+npx create-apex-js-app myApp -t apexjs-template-my-lib
 
 # load the template from the npm package apexjs-template-my-lib with the version 0.1.4
-npx create-apex-js-app myApp --template apexjs-template-my-lib@0.1.4
+npx create-apex-js-app myApp -t apexjs-template-my-lib@0.1.4
 
 # load the template from the github repository "myTemplate" of user "gituser" via https
-npx create-apex-js-app myApp --template git+https://git@github.com/gituser/myTemplate.git
+npx create-apex-js-app myApp -t git+https://git@github.com/gituser/myTemplate.git
 
 # load tag 0.1.4 of the template myLocalTemplate from your local git url with ssh
-npx create-apex-js-app myApp --template git+ssh://git@my-local-git-url:myLocalTemplate.git#0.1.4
+npx create-apex-js-app myApp -t git+ssh://git@my-local-git-url:myLocalTemplate.git#0.1.4
 ```
 
-Please note, that while it is a possibility to install from a gib repository by calling "gituser/repository" only, this notation can not be used here. You need to provide the full git url as shown above.
+Please note, that while it is a possibility to install from a gib repository by calling "gituser/repository" only, this notation can not be used here. You must provide the full git url as shown above.
 
 Check below section for more details on how to [create your own template](#create-your-own-template) .
 
 ### Questions during the creation
 
-During the creation of your library, you might be asked additional question regarding the details of your app. The questions are however not predefined and rather defined from the template you use. By default, this tool uses the [apexjs-template-js-lib](https://github.com/dfrechdev/apexjs-template-js-lib) template. Check the documentation of the template for details regarding the setup questions.
+During the creation of your library, you might be asked additional question regarding the details of your app. These questions are set by the template you use. By default, this tool uses the [apexjs-template-js-lib](https://github.com/dfrechdev/apexjs-template-js-lib) template. Check the documentation of the template for details regarding the setup questions.
 
 ## How to use your app
 
@@ -132,7 +131,7 @@ npm run build
 
 This will create JSDoc documentation and the bundled JavaScript and CSS files, but without source maps. With the `build` command, only the build is run and no watcher for further changes is started.
 
-## Configuring your library
+## Configuration
 
 You can change your build to your needs by changing the following configuration files:
 
@@ -144,7 +143,7 @@ You can change your build to your needs by changing the following configuration 
 
 ### Externals
 
-Externals are parts of your app, that should not be included in your bundle, as they are already loaded on your page, such as jQuery for example. The template you uses decides which parts should be added as externals. By default, this tool uses the [apexjs-template-js-lib](https://github.com/dfrechdev/apexjs-template-js-lib) template. Check the documentation of the template for details regarding externals.
+Externals are parts of your app that should not be included in your bundle, as they are already loaded on your page, such as jQuery for example. The template you uses decides which parts should be added as externals. By default, this tool uses the [apexjs-template-js-lib](https://github.com/dfrechdev/apexjs-template-js-lib) template. Check the documentation of the template for details regarding externals.
 
 Additional external libraries that are already available on your site and should not be bundled can be added to the rollup.config.js file.
 
