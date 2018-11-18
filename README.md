@@ -1,7 +1,5 @@
 # create-apex-js-app
 
-**This project is currently in development and will be made available for creating your libraries as described below soon. Contact me, if you want to receive an update as soon as the project is released.**
-
 ## Introduction
 
 This tool bootstraps a JavaScript app for your APEX application. By default, it uses the [apexjs-template-js-lib](https://github.com/dfrechdev/apexjs-template-js-lib) template, which allows you to create your own JavaScript library for APEX and includes a full build process the transforms your source code in the following ways:
