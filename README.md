@@ -82,10 +82,12 @@ Please note, that while it is a possibility to install from a gib repository by 
 
 Check below section for more details on how to [create your own template](#create-your-own-template) .
 
-The following templates are currently plublicly available for `create-apex-js-app`:
+#### Available templates
+
+The following templates are currently publicly available for `create-apex-js-app`:
 
 | Template name | Description | 
-| ------------- | ------------- |
+| :------------ | :---------- |
 | [apexjs-template-js-lib][defaulttemplate]  | Default template to create a JavaScript library  |
 
 You have an idea for an additional template? You already create a template and want to share it? Check out below section on [how to contribute][contributing].
