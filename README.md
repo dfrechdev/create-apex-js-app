@@ -4,8 +4,6 @@
 [![David](https://img.shields.io/david/dfrechdev/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/package.json) 
 [![NpmLicense](https://img.shields.io/npm/l/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/LICENSE)
 
-
-
 `create-apex-js-app` bootstraps a JavaScript app for your APEX application based on a template. This template can either be a publicly available template as a npm package or git repository, or your own, fully customized template. By default, `create-apex-js-app` uses the [apexjs-template-js-lib][defaulttemplate] template, which allows you to create your own JavaScript library for APEX and includes a full build process.
 
 By using a standardized way to build your JavaScript code, you will benefit from an increase in quality and reusability of your JavaScript codebase. `create-apex-js-app` helps you with the initial setup of your project, which can be tedious and time-consuming, and allows you to concentrate on your code.
@@ -83,6 +81,14 @@ npx create-apex-js-app myApp -t git+ssh://git@my-local-git-url:myLocalTemplate.g
 Please note, that while it is a possibility to install from a gib repository by calling "gituser/repository" only, this notation can not be used here. You must provide the full git url as shown above.
 
 Check below section for more details on how to [create your own template](#create-your-own-template) .
+
+The following templates are currently plublicly available for `create-apex-js-app`:
+
+| Template name | Description | 
+| ------------- | ------------- |
+| [apexjs-template-js-lib][defaulttemplate]  | Default template to create a JavaScript library  |
+
+You have an idea for an additional template? You already create a template and want to share it? Check out below section on [how to contribute][contributing].
 
 ### Questions during the creation
 
