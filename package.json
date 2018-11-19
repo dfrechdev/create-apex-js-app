@@ -13,7 +13,7 @@
         "javascript"
     ],
     "dependencies": {
-        "apexjs-template-js-lib": "^0.0.4",
+        "apexjs-template-js-lib": "0.0.5",
         "chalk": "^2.4.1",
         "commander": "^2.19.0",
         "cross-spawn": "^6.0.5",
@@ -32,5 +32,6 @@
         "name": "Daniel Frech",
         "email": "dfrechdev@gmail.com"
     },
+    "contributors": [],
     "license": "MIT"
 }

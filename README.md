@@ -1,27 +1,12 @@
 # create-apex-js-app
 
-This tool bootstraps a JavaScript app for your APEX application. By default, it uses the [apexjs-template-js-lib](https://github.com/dfrechdev/apexjs-template-js-lib) template, which allows you to create your own JavaScript library for APEX and includes a full build process.
+`create-apex-js-app` bootstraps a JavaScript app for your APEX application based on a template. This template can either be a publicly available template as a npm package or git repository, or your own, fully customized template. By default, `create-apex-js-app` uses the [apexjs-template-js-lib][defaulttemplate] template, which allows you to create your own JavaScript library for APEX and includes a full build process.
 
-## Benefits of using create-apex-js-app
-
-By using a standardized way to build your JavaScript code for APEX, you will boost the quality and reusability of your Javascript code. In detail, you will benefit from the following possibilities and transformations of your source code during the build process:
-
--   all JavaScript code is bundled into one file
--   all JavaScript code is transpiled to ES5 syntax
--   language features that are not part of ES5 and cannot be transpiled (eg. Promise, Map, Set, ...) and are use in the code are polyfilled
--   the target environment (supported browsers) of your build can be set in one place and define the result of the transpilation and polyfills
--   in development mode, source maps are created inline within the bundle file to ease debugging in the browsers development console
--   ESLint statically checks the source code with the `eslint:recommended` rule set
--   CSS files that are imported into the JavaScript source files are extracted with vendor prefixes added into a separate CSS file
--   all transformed code is minimized and shortened
-
-The result of the build process is a JavaScript bundle file, that contains the transpiled source code with the dependencies and required polyfills, as well as a CSS file that includes the code of all imported CSS files. The bundled file can be used in APEX and exposes the source code in one library variable to the application.
-
-All default settings can be easily changed according to your needs, after you have created your app.
+By using a standardized way to build your JavaScript code, you will benefit from an increase in quality and reusability of your JavaScript codebase. `create-apex-js-app` helps you with the initial setup of your project, which can be tedious and time-consuming, and allows you to concentrate on your code.
 
 ## Before you start
 
-Before you start, make sure you have the following installed:
+Please make sure you have the following installed:
 
 -   node.js >= 8.9.0
 -   npm >= 5.2.0
@@ -39,7 +24,7 @@ To create your JavaScript app for APEX, run the following command in your shell 
 npx create-apex-js-app <app-name>
 ```
 
-This will download and run the generator package, without leaving anything installed on your machine from the generator itself.
+This will download and run the generator package, without leaving anything installed on your machine from the generator itself. If you do not specify a template, as in this example, `create-apex-js-app` uses the [apexjs-template-js-lib][defaulttemplate] template.
 
 You can also use a specific version for the generation of your app:
 
@@ -95,61 +80,21 @@ Check below section for more details on how to [create your own template](#creat
 
 ### Questions during the creation
 
-During the creation of your library, you might be asked additional question regarding the details of your app. These questions are set by the template you use. By default, this tool uses the [apexjs-template-js-lib](https://github.com/dfrechdev/apexjs-template-js-lib) template. Check the documentation of the template for details regarding the setup questions.
+During the creation of your app, you might be asked additional question regarding the details of your app. These questions are set by the template you use. By default, this tool uses the [apexjs-template-js-lib][defaulttemplate] template. Check the documentation of the template for details regarding the setup questions.
 
-## How to use your app
+## How to write and build your app
 
-The generated app contains a `src` folder with a file called `main.js`. This is the default entry point for the bundle generation and the place where your JavaScript code should go. You can import any node package that you have installed or local modules that you have created in separate files. All exported variables, objects or functions within the main.js file will be accessible in your library. Check the `examples` folder in your app to see how you can add your code.
-
-### Development build
-
-To create a bundle for development, issue the following command from the root of your app:
-
-```bash
-npm run dev
-```
-
-This will create the bundled JavaScript and CSS files with your transformed source code in the `dist` folder. Further it will watch the source folder for changes and will bundle the file whenever a change occurs.
-
-### Create documentation
-
-To create the JSDoc documentation from your source code, run the following command:
-
-```bash
-npm run doc
-```
-
-This will create the documentation in the `dist/doc` folder of your app.
-
-### Production build
-
-To bundle everything for production, issue the following command:
-
-```bash
-npm run build
-```
-
-This will create JSDoc documentation and the bundled JavaScript and CSS files, but without source maps. With the `build` command, only the build is run and no watcher for further changes is started.
-
-## Configuration
-
-You can change your build to your needs by changing the following configuration files:
-
--   [package.json](https://docs.npmjs.com/files/package.json): Root configuration file of your project. Includes the name of your app, the exposed library code, the version of your app and many more.
--   [rollup.config.js](https://rollupjs.org/guide/en): Configuration file for the bundle process of your library
--   [.eslintrc.json](https://eslint.org/docs/user-guide/configuring): Settings file for ESLint. By default the predefined [eslint:recommended](https://eslint.org/docs/rules/) rules are used for ESlint. If you want to use another set, you can change it in this configuration file. The .eslintignore file in addition includes all the files that should be ignored by ESLint
--   [.prettierrc](https://github.com/prettier/prettier): Rules for the Prettier extension in VSCode
--   [jsdoc.conf](http://usejsdoc.org/about-configuring-jsdoc.html): Configuration file for documentation creation with JSDoc
+How to write an build your app depends on the template you use. By default, this tool uses the [apexjs-template-js-lib][defaulttemplate] template. Check the documentation of the template for details regarding usage and the build process.
 
 ### Externals
 
-Externals are parts of your app that should not be included in your bundle, as they are already loaded on your page, such as jQuery for example. The template you uses decides which parts should be added as externals. By default, this tool uses the [apexjs-template-js-lib](https://github.com/dfrechdev/apexjs-template-js-lib) template. Check the documentation of the template for details regarding externals.
+Externals are parts of your app that should not be included in your bundle, as they are already loaded on your page, such as jQuery for example. The template you uses decides which parts should be added as externals. By default, this tool uses the [apexjs-template-js-lib][defaulttemplate] template. Check the documentation of the template for details regarding externals.
 
 Additional external libraries that are already available on your site and should not be bundled can be added to the rollup.config.js file.
 
 ## Create your own template
 
-When using this tool, chances are that at some point you want to change some of the predefined settings and generate your libraries from your own, customized template. To create your own template, please fork the default template repository ([apexjs-template-js-lib](https://github.com/dfrechdev/apexjs-template-js-lib)) and create your template from that. Checkout the guide on [forking projects](https://guides.github.com/activities/forking/) if you are not familiar with forking. If you do not want to have your template publicly available, you can clone the template and then remove the link to the git repository as well.
+When using this tool, chances are that at some point you want to change some of the predefined settings and generate your libraries from your own, customized template. To create your own template, please fork the default template repository ([apexjs-template-js-lib][defaulttemplate]) and create your template from that. Checkout the guide on [forking projects](https://guides.github.com/activities/forking/) if you are not familiar with forking. If you do not want to have your template publicly available, you can clone the template and then remove the link to the git repository as well.
 
 Having created your copy of the default template, there are just a few things that you need to follow, in order to be able to use it from this tool:
 
@@ -158,6 +103,10 @@ Having created your copy of the default template, there are just a few things th
 3. When the above method has completed, there needs to exist a folder called `template` in the root of your template. All files contained in that folder will be copied to the new app during the creation.
 4. The template project should not contain the `node_modules` folder. Make sure, that this folder is added to the `.gitignore` file. All dependencies listed in your `package.json` will be installed during the creation of a new app.
 
+## Contribute
+
+Found a bug? Have an idea? See [how to contribute][contributing].
+
 ## Author
 
 Daniel Frech, 2018
@@ -165,3 +114,6 @@ Daniel Frech, 2018
 ## License
 
 [MIT](LICENSE)
+
+[contributing]: /CONTRIBUTING.md
+[defaulttemplate]: https://github.com/dfrechdev/apexjs-template-js-lib
