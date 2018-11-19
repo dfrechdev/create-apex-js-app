@@ -86,12 +86,6 @@ During the creation of your app, you might be asked additional question regardin
 
 How to write an build your app depends on the template you use. By default, this tool uses the [apexjs-template-js-lib][defaulttemplate] template. Check the documentation of the template for details regarding usage and the build process.
 
-### Externals
-
-Externals are parts of your app that should not be included in your bundle, as they are already loaded on your page, such as jQuery for example. The template you uses decides which parts should be added as externals. By default, this tool uses the [apexjs-template-js-lib][defaulttemplate] template. Check the documentation of the template for details regarding externals.
-
-Additional external libraries that are already available on your site and should not be bundled can be added to the rollup.config.js file.
-
 ## Create your own template
 
 When using this tool, chances are that at some point you want to change some of the predefined settings and generate your libraries from your own, customized template. To create your own template, please fork the default template repository ([apexjs-template-js-lib][defaulttemplate]) and create your template from that. Checkout the guide on [forking projects](https://guides.github.com/activities/forking/) if you are not familiar with forking. If you do not want to have your template publicly available, you can clone the template and then remove the link to the git repository as well.
