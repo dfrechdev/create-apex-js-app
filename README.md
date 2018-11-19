@@ -1,5 +1,9 @@
 # create-apex-js-app
 
+[![npm](https://img.shields.io/npm/v/create-apex-js-app.svg?style=flat-square)](https://www.npmjs.com/package/create-apex-js-app) 
+[![David](https://img.shields.io/david/dfrechdev/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/package.json) 
+[![NpmLicense](https://img.shields.io/npm/l/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/LICENSE)
+
 `create-apex-js-app` bootstraps a JavaScript app for your APEX application based on a template. This template can either be a publicly available template as a npm package or git repository, or your own, fully customized template. By default, `create-apex-js-app` uses the [apexjs-template-js-lib][defaulttemplate] template, which allows you to create your own JavaScript library for APEX and includes a full build process.
 
 By using a standardized way to build your JavaScript code, you will benefit from an increase in quality and reusability of your JavaScript codebase. `create-apex-js-app` helps you with the initial setup of your project, which can be tedious and time-consuming, and allows you to concentrate on your code.
@@ -78,6 +82,16 @@ Please note, that while it is a possibility to install from a gib repository by 
 
 Check below section for more details on how to [create your own template](#create-your-own-template) .
 
+#### Available templates
+
+The following templates are currently publicly available for `create-apex-js-app`:
+
+| Template name | Description | 
+| :------------ | :---------- |
+| [apexjs-template-js-lib][defaulttemplate]  | Default template to create a JavaScript library  |
+
+You have an idea for an additional template? You already create a template and want to share it? Check out below section on [how to contribute][contributing].
+
 ### Questions during the creation
 
 During the creation of your app, you might be asked additional question regarding the details of your app. These questions are set by the template you use. By default, this tool uses the [apexjs-template-js-lib][defaulttemplate] template. Check the documentation of the template for details regarding the setup questions.
@@ -85,12 +99,6 @@ During the creation of your app, you might be asked additional question regardin
 ## How to write and build your app
 
 How to write an build your app depends on the template you use. By default, this tool uses the [apexjs-template-js-lib][defaulttemplate] template. Check the documentation of the template for details regarding usage and the build process.
-
-### Externals
-
-Externals are parts of your app that should not be included in your bundle, as they are already loaded on your page, such as jQuery for example. The template you uses decides which parts should be added as externals. By default, this tool uses the [apexjs-template-js-lib][defaulttemplate] template. Check the documentation of the template for details regarding externals.
-
-Additional external libraries that are already available on your site and should not be bundled can be added to the rollup.config.js file.
 
 ## Create your own template
 
