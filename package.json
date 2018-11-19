@@ -1,6 +1,6 @@
 {
     "name": "create-apex-js-app",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "Generator to bootstrap a JavaScript app for a APEX application",
     "main": "index.js",
     "scripts": {},
