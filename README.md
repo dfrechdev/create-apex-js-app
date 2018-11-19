@@ -1,8 +1,8 @@
 # create-apex-js-app
 
-[![npm](https://img.shields.io/npm/v/create-apex-js-app.svg)](https://www.npmjs.com/package/create-apex-js-app) 
-[![David](https://img.shields.io/david/dfrechdev/create-apex-js-app.svg)](https://github.com/dfrechdev/create-apex-js-app/blob/master/package.json) 
-[![NpmLicense](https://img.shields.io/npm/l/create-apex-js-app.svg)](https://github.com/dfrechdev/create-apex-js-app/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/create-apex-js-app.svg?style=flat-square)](https://www.npmjs.com/package/create-apex-js-app) 
+[![David](https://img.shields.io/david/dfrechdev/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/package.json) 
+[![NpmLicense](https://img.shields.io/npm/l/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/LICENSE)
 
 
 
