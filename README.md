@@ -1,6 +1,7 @@
 # create-apex-js-app
 
-[![npm](https://img.shields.io/npm/v/create-apex-js-app.svg)](https://www.npmjs.com/package/create-apex-js-app)
+[![npm](https://img.shields.io/npm/v/create-apex-js-app.svg)](https://www.npmjs.com/package/create-apex-js-app) 
+[![David](https://img.shields.io/david/dfrechdev/create-apex-js-app.svg)](https://github.com/dfrechdev/create-apex-js-app/blob/master/package.json)
 
 `create-apex-js-app` bootstraps a JavaScript app for your APEX application based on a template. This template can either be a publicly available template as a npm package or git repository, or your own, fully customized template. By default, `create-apex-js-app` uses the [apexjs-template-js-lib][defaulttemplate] template, which allows you to create your own JavaScript library for APEX and includes a full build process.
 
