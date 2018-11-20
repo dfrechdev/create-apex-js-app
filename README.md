@@ -111,6 +111,16 @@ Having created your copy of the default template, there are just a few things th
 3. When the above method has completed, there needs to exist a folder called `template` in the root of your template. All files contained in that folder will be copied to the new app during the creation.
 4. The template project should not contain the `node_modules` folder. Make sure, that this folder is added to the `.gitignore` file. All dependencies listed in your `package.json` will be installed during the creation of a new app.
 
+## FAQ
+
+- **When creating the app with npx, the warning "Path must be a string. Received undefined." is shown.**
+
+While not having an effect on the app creation, this is a know [issue](https://github.com/zkat/npx/issues/144) of npx and is solved by updating the npx package:
+
+```bash
+npm i -g npx
+```
+
 ## Contribute
 
 Found a bug? Have an idea? See [how to contribute][contributing].
