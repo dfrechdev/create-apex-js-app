@@ -57,10 +57,7 @@ function copyTemplateFilesSync(app) {
     }
 }
 
-function setupTemplate(app) {
+function setupTemplate(app, template) {
     logger.logInfo('setting up template');
-    const template = require(app.templateName);
-    return template
-        .setupApp({ appName: app.name, appPath: app.getAppPath() })
-        .then(() => logger.logSuccess('done\n'));
+    return template.setupApp(app.getBasicAppInfo()).then(() => logger.logSuccess('done\n'));
 }

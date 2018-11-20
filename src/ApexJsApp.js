@@ -28,6 +28,10 @@ class ApexJsApp {
         return path.join(this.execPath, 'node_modules', this.templateName, 'template');
     }
 
+    getBasicAppInfo() {
+        return { appName: app.name, appPath: app.getAppPath() };
+    }
+
     setProgram() {
         // set and parse command line options
         this.program = new commander.Command(pkgJson.name)
@@ -62,7 +66,11 @@ class ApexJsApp {
     }
 
     create() {
-        logger.logWelcomeMsg(this);
+        logger.log('\n', chalk.cyan.bold('Create your JavaScript app for APEX!\n'));
+        logger.log(chalk.bold(logSymbols.info, 'app name: ') + chalk.cyan(app.name) + '\n');
+
+        // load installed template
+        const template = require(app.templateName);
 
         appCreation
             // install template, if a template has been defined in options
@@ -71,7 +79,7 @@ class ApexJsApp {
             .then(() => {
                 appCreation.createAppDirectorySync(this);
                 appCreation.copyTemplateFilesSync(this);
-                return appCreation.setupTemplate(this);
+                return appCreation.setupTemplate(this, template);
             })
             .catch((e) => {
                 logger.logError('error during the setup of the template', e);
@@ -87,7 +95,9 @@ class ApexJsApp {
             })
             // wrap up app creation
             .then(() => {
-                logger.logAppCreatedMsg(this);
+                logger.logSuccess(`created app "${app.name}" at "${app.getAppPath()}".\n`);
+                template.logWelcomeMsg(this.getBasicAppInfo());
+                logger.log(chalk.green('\nHappy coding!'));
             });
     }
 }

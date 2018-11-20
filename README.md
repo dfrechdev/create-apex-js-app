@@ -1,7 +1,9 @@
 # create-apex-js-app
 
-[![npm](https://img.shields.io/npm/v/create-apex-js-app.svg?style=flat-square)](https://www.npmjs.com/package/create-apex-js-app) 
-[![David](https://img.shields.io/david/dfrechdev/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/package.json) 
+[![npm](https://img.shields.io/npm/v/create-apex-js-app.svg?style=flat-square)](https://www.npmjs.com/package/create-apex-js-app)
+
+[![David](https://img.shields.io/david/dfrechdev/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/package.json)
+
 [![NpmLicense](https://img.shields.io/npm/l/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/LICENSE)
 
 `create-apex-js-app` bootstraps a JavaScript app for your APEX application based on a template. This template can either be a publicly available template as a npm package or git repository, or your own, fully customized template. By default, `create-apex-js-app` uses the [apexjs-template-js-lib][defaulttemplate] template, which allows you to create your own JavaScript library for APEX and includes a full build process.
@@ -86,9 +88,9 @@ Check below section for more details on how to [create your own template](#creat
 
 The following templates are currently publicly available for `create-apex-js-app`:
 
-| Template name | Description | 
-| :------------ | :---------- |
-| [apexjs-template-js-lib][defaulttemplate]  | Default template to create a JavaScript library  |
+| Template name                             | Description                                     |
+| :---------------------------------------- | :---------------------------------------------- |
+| [apexjs-template-js-lib][defaulttemplate] | Default template to create a JavaScript library |
 
 You have an idea for an additional template? You already create a template and want to share it? Check out below section on [how to contribute][contributing].
 
@@ -107,13 +109,13 @@ When using this tool, chances are that at some point you want to change some of 
 Having created your copy of the default template, there are just a few things that you need to follow, in order to be able to use it from this tool:
 
 1. The `package.json` file of your template project, needs to include all the dependencies required during the creation of a app with your template. It is important that they are added as dependencies and not devDependencies!
-2. Your template needs to expose a method called `setupLibrary()` in the `index.js` file in the root of your template. This method should include all customization you want to apply to your template during the creation of a new app.
-3. When the above method has completed, there needs to exist a folder called `template` in the root of your template. All files contained in that folder will be copied to the new app during the creation.
+2. Your template must expose the methods called `setupLibrary` and `logWelcomeMsg` in the `index.js` file in the root of your template. The `setupLibrary` method should include all customization you want to apply to your template during the creation of a new app and before the template files are copied. It can also include any questions you want to ask for details that you need for the app creation. The `logWelcomeMsg` method can include any message you want to log to the console when the app has been created and should serve as a short introduction on how to use your template.
+3. After the `setupLibrary` method has completed, a folder called `template` must exist in the root of your template. All files contained in that folder will be copied to the new app.
 4. The template project should not contain the `node_modules` folder. Make sure, that this folder is added to the `.gitignore` file. All dependencies listed in your `package.json` will be installed during the creation of a new app.
 
 ## FAQ
 
-- **When creating the app with npx, the warning "Path must be a string. Received undefined." is shown.**
+-   **When creating the app with npx, the warning "Path must be a string. Received undefined." is shown.**
 
 While not having an effect on the app creation, this is a know [issue](https://github.com/zkat/npx/issues/144) of npx and is solved by updating the npx package:
 
