@@ -4,6 +4,7 @@ const pkgJson = require('../package.json');
 const path = require('path');
 const GitUrlParse = require('git-url-parse');
 const appCreation = require('./appCreation');
+const chalk = require('chalk');
 
 /**
  * @class ApexJsApp
@@ -29,7 +30,7 @@ class ApexJsApp {
     }
 
     getBasicAppInfo() {
-        return { appName: app.name, appPath: app.getAppPath() };
+        return { appName: this.name, appPath: this.getAppPath() };
     }
 
     setProgram() {
@@ -67,11 +68,10 @@ class ApexJsApp {
 
     create() {
         logger.log('\n', chalk.cyan.bold('Create your JavaScript app for APEX!\n'));
-        logger.log(chalk.bold(logSymbols.info, 'app name: ') + chalk.cyan(app.name) + '\n');
+        logger.log(chalk.bold('app name: ') + chalk.cyan(this.name) + '\n');
 
         // load installed template
-        const template = require(app.templateName);
-
+        let template = require(this.templateName);
         appCreation
             // install template, if a template has been defined in options
             .installTemplate(this)
@@ -95,7 +95,7 @@ class ApexJsApp {
             })
             // wrap up app creation
             .then(() => {
-                logger.logSuccess(`created app "${app.name}" at "${app.getAppPath()}".\n`);
+                logger.logSuccess(`created app "${this.name}" at "${this.getAppPath()}".\n`);
                 template.logWelcomeMsg(this.getBasicAppInfo());
                 logger.log(chalk.green('\nHappy coding!'));
             });
