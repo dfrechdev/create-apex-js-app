@@ -15,13 +15,8 @@ module.exports = {
 };
 
 function installTemplate(app) {
-    if (app.program.template) {
-        logger.logInfo(`installing template "${app.templateUrl}"`);
-        return npmHandler
-            .installPackage(app.templateUrl, app.execPath)
-            .then(() => logger.logSuccess('done\n'));
-    }
-    return Promise.resolve('done');
+    logger.logInfo(`installing template "${app.templateUrl}"`);
+    return npmHandler.installPackage(app.templateUrl, app.execPath).then(() => logger.logSuccess('done\n'));
 }
 
 function installDependencies(app) {

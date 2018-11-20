@@ -67,7 +67,7 @@ class ApexJsApp {
     }
 
     create() {
-        logger.log('\n', chalk.cyan.bold('Create your JavaScript app for APEX!\n'));
+        logger.log('\n' + chalk.cyan.bold('Create your JavaScript app for APEX!\n'));
         logger.log(chalk.bold('app name: ') + chalk.cyan(this.name) + '\n');
 
         // load installed template
