@@ -1,8 +1,10 @@
 language: node_js
-os:
-  - osx
+dist: xenial
 node_js:
   - "lts/*"
+branches:
+  only: 
+    - master
 install:
   - npm install -g
 script:
