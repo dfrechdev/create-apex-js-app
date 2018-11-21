@@ -1,10 +1,6 @@
 # create-apex-js-app
 
-[![npm](https://img.shields.io/npm/v/create-apex-js-app.svg?style=flat-square)](https://www.npmjs.com/package/create-apex-js-app)
-
-[![David](https://img.shields.io/david/dfrechdev/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/package.json)
-
-[![NpmLicense](https://img.shields.io/npm/l/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/create-apex-js-app.svg?style=flat-square)](https://www.npmjs.com/package/create-apex-js-app) [![David](https://img.shields.io/david/dfrechdev/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/package.json) [![David](https://img.shields.io/david/dev/dfrechdev/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/package.json) [![NpmLicense](https://img.shields.io/npm/l/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/LICENSE)
 
 `create-apex-js-app` bootstraps a JavaScript app for your Oracle APEX application based on a template. This template can either be a publicly available template as a npm package or git repository, or your own, fully customized template. By default, `create-apex-js-app` uses the [apexjs-template-js-lib][defaulttemplate] template, which allows you to create your own JavaScript library for APEX and includes a full build process.
 
@@ -14,8 +10,7 @@ By using a standardized way to build your JavaScript code, you will benefit from
 
 Please make sure you have the following installed:
 
--   node.js >= 8.9.0
--   npm >= 5.2.0
+-   [node.js][node] >= 8.9.0
 
 These tools are optional, but greatly enhance your development experience:
 
@@ -80,7 +75,7 @@ npx create-apex-js-app myApp -t git+https://git@github.com/gituser/myTemplate.gi
 npx create-apex-js-app myApp -t git+ssh://git@my-local-git-url:myLocalTemplate.git#0.1.4
 ```
 
-Please note, that while it is a possibility to install from a gib repository by calling "gituser/repository" only, this notation can not be used here. You must provide the full git url as shown above.
+Please note, that while it is a possibility to install a project from a github repository like "gituser/repository", this notation can not be used here at this point. You must provide the full git url as shown above in order to assure that the template is loaded correctly.
 
 Check below section for more details on how to [create your own template](#create-your-own-template) .
 
@@ -137,3 +132,4 @@ Daniel Frech, 2018
 
 [contributing]: /CONTRIBUTING.md
 [defaulttemplate]: https://github.com/dfrechdev/apexjs-template-js-lib
+[node]: https://nodejs.org/en/download/

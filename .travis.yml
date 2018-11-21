@@ -1,0 +1,11 @@
+language: node_js
+dist: xenial
+node_js:
+  - "lts/*"
+branches:
+  only: 
+    - master
+install:
+  - npm install -g
+script:
+  - create-apex-js-app test && cd test && npm run build
