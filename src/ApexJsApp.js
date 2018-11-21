@@ -47,7 +47,7 @@ class ApexJsApp {
                 this.name = name;
             })
             .option('-t, --template [value]', 'template name')
-            .option('-n, --noinstall', 'do not install dependencies')
+            .option('-n, --no-install', 'do not install dependencies')
             .option('-s, --supress-inquiry', 'supress inquiry during app creation')
             .parse(process.argv);
 
