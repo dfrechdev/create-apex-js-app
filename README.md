@@ -37,12 +37,12 @@ This uses version 0.0.1 of this tool to create your app.
 
 ### Options
 
-#### -n / --no-install
+#### -p / --plain
 
-By default, the required dependencies for your app are installed during the creation of your project. If you do not want this and rather install the dependencies yourself at a later point, you can use the --noinstall flag.
+By default, the required dependencies for your app are installed during the creation of your project. If you do not want this and rather install the dependencies yourself at a later point, you can use the --plain flag.
 
 ```bash
-npx create-apex-js-app <app-name> --no-install
+npx create-apex-js-app <app-name> --plain
 ```
 
 Before you can start bundling your app, you then need to install the dependencies by running the following command from the route of your project:

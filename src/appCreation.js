@@ -25,7 +25,7 @@ function installTemplate(app) {
 }
 
 function installDependencies(app) {
-    if (app.program.noInstall) {
+    if (app.program.plain) {
         logger.logWarning(
             'Your dependencies have not been installed. Please run "npm install" inside of your project.\n'
         );
