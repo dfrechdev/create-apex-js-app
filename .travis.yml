@@ -1,0 +1,11 @@
+language: node_js
+os:
+  - windows
+  - linux
+  - osx
+node_js:
+  - "lts/*"
+install:
+  - npm install -g
+script:
+  - create-apex-js-app test && cd test && npm run build
