@@ -15,12 +15,17 @@ module.exports = {
 };
 
 function installTemplate(app) {
-    logger.logInfo(`installing template "${app.templateUrl}"`);
-    return npmHandler.installPackage(app.templateUrl, app.execPath).then(() => logger.logSuccess('done\n'));
+    if (app.program.template) {
+        logger.logInfo(`installing template "${app.templateUrl}"`);
+        return npmHandler
+            .installPackage(app.templateUrl, app.execPath)
+            .then(() => logger.logSuccess('done\n'));
+    }
+    return Promise.resolve('done');
 }
 
 function installDependencies(app) {
-    if (app.program.noinstall) {
+    if (app.program.plain) {
         logger.logWarning(
             'Your dependencies have not been installed. Please run "npm install" inside of your project.\n'
         );
