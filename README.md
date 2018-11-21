@@ -10,8 +10,7 @@ By using a standardized way to build your JavaScript code, you will benefit from
 
 Please make sure you have the following installed:
 
--   node.js >= 8.9.0
--   npm >= 5.2.0
+-   [node.js][node] >= 8.9.0
 
 These tools are optional, but greatly enhance your development experience:
 
@@ -133,3 +132,4 @@ Daniel Frech, 2018
 
 [contributing]: /CONTRIBUTING.md
 [defaulttemplate]: https://github.com/dfrechdev/apexjs-template-js-lib
+[node]: https://nodejs.org/en/download/
