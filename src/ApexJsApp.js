@@ -70,15 +70,17 @@ class ApexJsApp {
         logger.log('\n' + chalk.cyan.bold('Create your JavaScript app for APEX!\n'));
         logger.log(chalk.bold('app name: ') + chalk.cyan(this.name) + '\n');
 
-        // load installed template
-        let template = require(this.templateName);
+        let template; 
+        
         appCreation
             // install template, if a template has been defined in options
-            .installTemplate(this)
-            // setup app directory, copy template files and forward to template for setup
+            .installTemplate(this)            
             .then(() => {
+                // setup app directory, copy template files and forward to template for setup
                 appCreation.createAppDirectorySync(this);
                 appCreation.copyTemplateFilesSync(this);
+                // load installed template
+                template = require(this.templateName);            
                 return appCreation.setupTemplate(this, template);
             })
             .catch((e) => {
