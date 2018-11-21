@@ -30,7 +30,11 @@ class ApexJsApp {
     }
 
     getBasicAppInfo() {
-        return { appName: this.name, appPath: this.getAppPath() };
+        return { 
+            appName: this.name, 
+            appPath: this.getAppPath(),
+            supressInquiry: this.program.supressInquiry
+        };
     }
 
     setProgram() {
@@ -44,6 +48,7 @@ class ApexJsApp {
             })
             .option('-t, --template [value]', 'template name')
             .option('-n, --noinstall', 'do not install dependencies')
+            .option('-s, --supress-inquiry', 'supress inquiry during app creation')
             .parse(process.argv);
 
         // set template url if template option is given
