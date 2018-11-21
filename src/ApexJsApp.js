@@ -69,8 +69,6 @@ class ApexJsApp {
         } else {
             this.templateName = this.templateUrl;
         }
-
-        console.log(this.program);
     }
 
     create() {
