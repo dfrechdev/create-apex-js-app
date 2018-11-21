@@ -89,9 +89,11 @@ The following templates are currently publicly available for `create-apex-js-app
 
 You have an idea for an additional template? You already create a template and want to share it? Check out below section on [how to contribute][contributing].
 
-### Questions during the creation
+#### -s / --supress-inquiry 
 
-During the creation of your app, you might be asked additional question regarding the details of your app. These questions are set by the template you use. By default, this tool uses the [apexjs-template-js-lib][defaulttemplate] template. Check the documentation of the template for details regarding the setup questions.
+During the creation of your app, you might be asked additional question regarding the details of your app. These questions are set by the template you use. Check the documentation of the template you use for details regarding the setup questions.
+
+This option is passed to the template and indicates, that no questions should be asked during the setup, hence the template must use default values for all questions. The main purpose for this is to allow the automatic build to pass without having to answer questions. You might however also use this option, if you are ok with all default values of a tempate anyways.
 
 ## How to write and build your app
 
