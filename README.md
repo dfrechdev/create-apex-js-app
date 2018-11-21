@@ -14,8 +14,8 @@ Please make sure you have the following installed:
 
 These tools are optional, but greatly enhance your development experience:
 
--   Visual Studio Code
--   Prettier Plugin for Visual Studio Code (a configuration file for Prettier is included)
+-   [Visual Studio Code][vscode]
+-   [Prettier Plugin for Visual Studio Code][prettier] (a configuration file for Prettier is included)
 
 ## Create your app
 
@@ -135,3 +135,5 @@ Daniel Frech, 2018
 [contributing]: /CONTRIBUTING.md
 [defaulttemplate]: https://github.com/dfrechdev/apexjs-template-js-lib
 [node]: https://nodejs.org/en/download/
+[vscode]: https://code.visualstudio.com/
+[prettier]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
