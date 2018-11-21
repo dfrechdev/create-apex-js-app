@@ -30,7 +30,11 @@ class ApexJsApp {
     }
 
     getBasicAppInfo() {
-        return { appName: this.name, appPath: this.getAppPath() };
+        return {
+            appName: this.name,
+            appPath: this.getAppPath(),
+            suppressInquiry: this.program.suppressInquiry
+        };
     }
 
     setProgram() {
@@ -43,7 +47,8 @@ class ApexJsApp {
                 this.name = name;
             })
             .option('-t, --template [value]', 'template name')
-            .option('-n, --noinstall', 'do not install dependencies')
+            .option('-p, --plain', 'plain creation, do not install dependencies')
+            .option('-s, --suppress-inquiry', 'suppress inquiry during app creation')
             .parse(process.argv);
 
         // set template url if template option is given
@@ -70,17 +75,17 @@ class ApexJsApp {
         logger.log('\n' + chalk.cyan.bold('Create your JavaScript app for APEX!\n'));
         logger.log(chalk.bold('app name: ') + chalk.cyan(this.name) + '\n');
 
-        let template; 
-        
+        let template;
+
         appCreation
             // install template, if a template has been defined in options
-            .installTemplate(this)            
+            .installTemplate(this)
             .then(() => {
                 // setup app directory, copy template files and forward to template for setup
                 appCreation.createAppDirectorySync(this);
                 appCreation.copyTemplateFilesSync(this);
                 // load installed template
-                template = require(this.templateName);            
+                template = require(this.templateName);
                 return appCreation.setupTemplate(this, template);
             })
             .catch((e) => {

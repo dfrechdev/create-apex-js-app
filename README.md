@@ -1,6 +1,6 @@
 # create-apex-js-app
 
-[![npm](https://img.shields.io/npm/v/create-apex-js-app.svg?style=flat-square)](https://www.npmjs.com/package/create-apex-js-app) [![David](https://img.shields.io/david/dfrechdev/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/package.json) [![David](https://img.shields.io/david/dev/dfrechdev/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/package.json) [![NpmLicense](https://img.shields.io/npm/l/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/create-apex-js-app.svg?style=flat-square)](https://www.npmjs.com/package/create-apex-js-app) [![Travis (.org) branch](https://img.shields.io/travis/dfrechdev/create-apex-js-app/master.svg?style=flat-square)](https://travis-ci.org/dfrechdev/create-apex-js-app) [![David](https://img.shields.io/david/dfrechdev/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/package.json) [![NpmLicense](https://img.shields.io/npm/l/create-apex-js-app.svg?style=flat-square)](https://github.com/dfrechdev/create-apex-js-app/blob/master/LICENSE)
 
 `create-apex-js-app` bootstraps a JavaScript app for your Oracle APEX application based on a template. This template can either be a publicly available template as a npm package or git repository, or your own, fully customized template. By default, `create-apex-js-app` uses the [apexjs-template-js-lib][defaulttemplate] template, which allows you to create your own JavaScript library for APEX and includes a full build process.
 
@@ -14,8 +14,8 @@ Please make sure you have the following installed:
 
 These tools are optional, but greatly enhance your development experience:
 
--   Visual Studio Code
--   Prettier Plugin for Visual Studio Code (a configuration file for Prettier is included)
+-   [Visual Studio Code][vscode]
+-   [Prettier Plugin for Visual Studio Code][prettier] (a configuration file for Prettier is included)
 
 ## Create your app
 
@@ -37,12 +37,12 @@ This uses version 0.0.1 of this tool to create your app.
 
 ### Options
 
-#### -n / --noinstall
+#### -p / --plain
 
-By default, the required dependencies for your app are installed during the creation of your project. If you do not want this and rather install the dependencies yourself at a later point, you can use the --noinstall flag.
+By default, the required dependencies for your app are installed during the creation of your project. If you do not want this and rather install the dependencies yourself at a later point, you can use the --plain flag.
 
 ```bash
-npx create-apex-js-app <app-name> --noinstall
+npx create-apex-js-app <app-name> --plain
 ```
 
 Before you can start bundling your app, you then need to install the dependencies by running the following command from the route of your project:
@@ -89,9 +89,11 @@ The following templates are currently publicly available for `create-apex-js-app
 
 You have an idea for an additional template? You already create a template and want to share it? Check out below section on [how to contribute][contributing].
 
-### Questions during the creation
+#### -s / --supress-inquiry
 
-During the creation of your app, you might be asked additional question regarding the details of your app. These questions are set by the template you use. By default, this tool uses the [apexjs-template-js-lib][defaulttemplate] template. Check the documentation of the template for details regarding the setup questions.
+During the creation of your app, you might be asked additional question regarding the details of your app. These questions are set by the template you use. Check the documentation of the template you use for details regarding the setup questions.
+
+This option is passed to the template and indicates, that no questions should be asked during the setup, hence the template must use default values for all questions. The main purpose for this is to allow the automatic build to pass without having to answer questions. You might however also use this option, if you are ok with all default values of a tempate anyways.
 
 ## How to write and build your app
 
@@ -133,3 +135,5 @@ Daniel Frech, 2018
 [contributing]: /CONTRIBUTING.md
 [defaulttemplate]: https://github.com/dfrechdev/apexjs-template-js-lib
 [node]: https://nodejs.org/en/download/
+[vscode]: https://code.visualstudio.com/
+[prettier]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode

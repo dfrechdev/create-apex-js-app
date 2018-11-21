@@ -1,11 +1,11 @@
 language: node_js
 dist: xenial
 node_js:
-  - "lts/*"
+    - 'lts/*'
 branches:
-  only: 
-    - master
+    only:
+        - master
 install:
-  - npm install -g
+    - npm install -g
 script:
-  - create-apex-js-app test && cd test && npm run build
+    - create-apex-js-app testApp -s && cd testApp && npm run build
