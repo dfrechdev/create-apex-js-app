@@ -37,12 +37,12 @@ This uses version 0.0.1 of this tool to create your app.
 
 ### Options
 
-#### -n / --noinstall
+#### -n / --no-install
 
 By default, the required dependencies for your app are installed during the creation of your project. If you do not want this and rather install the dependencies yourself at a later point, you can use the --noinstall flag.
 
 ```bash
-npx create-apex-js-app <app-name> --noinstall
+npx create-apex-js-app <app-name> --no-install
 ```
 
 Before you can start bundling your app, you then need to install the dependencies by running the following command from the route of your project:
@@ -89,7 +89,7 @@ The following templates are currently publicly available for `create-apex-js-app
 
 You have an idea for an additional template? You already create a template and want to share it? Check out below section on [how to contribute][contributing].
 
-#### -s / --supress-inquiry 
+#### -s / --supress-inquiry
 
 During the creation of your app, you might be asked additional question regarding the details of your app. These questions are set by the template you use. Check the documentation of the template you use for details regarding the setup questions.
 
