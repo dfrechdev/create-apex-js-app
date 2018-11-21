@@ -75,7 +75,7 @@ npx create-apex-js-app myApp -t git+https://git@github.com/gituser/myTemplate.gi
 npx create-apex-js-app myApp -t git+ssh://git@my-local-git-url:myLocalTemplate.git#0.1.4
 ```
 
-Please note, that while it is a possibility to install from a gib repository by calling "gituser/repository" only, this notation can not be used here. You must provide the full git url as shown above.
+Please note, that while it is a possibility to install a project from a github repository like "gituser/repository", this notation can not be used here at this point. You must provide the full git url as shown above in order to assure that the template is loaded correctly.
 
 Check below section for more details on how to [create your own template](#create-your-own-template) .
 
