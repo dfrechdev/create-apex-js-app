@@ -95,9 +95,15 @@ During the creation of your app, you might be asked additional question regardin
 
 This option is passed to the template and indicates, that no questions should be asked during the setup, hence the template must use default values for all questions. The main purpose for this is to allow the automatic build to pass without having to answer questions. You might however also use this option, if you are ok with all default values of a tempate anyways.
 
-## How to write and build your app
+## How to use your app
 
-How to write an build your app depends on the template you use. By default, this tool uses the [apexjs-template-js-lib][defaulttemplate] template. Check the documentation of the template for details regarding usage and the build process.
+How to write an build your app depends on the template you use. By default, this tool uses the [apexjs-template-js-lib][defaulttemplate] template, which bootstraps a project that allows you to put your JavaScript code into a library that you can then use in APEX. For this template, the build of your app can be triggered by executing the following command in the root of your app:
+
+```bash
+npm run build
+``` 
+
+For all details on how to write and build your app, check the documentation of the template your are using.
 
 ## Create your own template
 
@@ -122,7 +128,7 @@ npm i -g npx
 
 ## Contribute
 
-Found a bug? Have an idea? See [how to contribute][contributing].
+Found a bug? Have an idea? Created a new template that you want to include in the list? See [how to contribute][contributing].
 
 ## Author
 
