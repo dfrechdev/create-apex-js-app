@@ -1,5 +1,9 @@
 language: node_js
-dist: xenial
+os:
+  - linux
+  dist: xenial
+  - osx
+  - windows
 node_js:
     - 'lts/*'
 branches:
@@ -8,4 +12,4 @@ branches:
 install:
     - npm install -g
 script:
-    - create-apex-js-app testApp -s && cd testApp && npm run build
+    - create-apex-js-app testApp -s -p && cd testApp
