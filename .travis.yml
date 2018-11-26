@@ -1,14 +1,16 @@
 language: node_js
-os:
-  - linux
-  dist: xenial
-  - osx
-  - windows
-node_js:
-    - 'lts/*'
-branches:
-    only:
-        - master
+matrix:
+    include:
+        os:
+        - linux
+        dist: xenial
+        - osx
+        - windows
+        node_js:
+            - 'lts/*'
+        branches:
+            only:
+                - master
 install:
     - npm install -g
 script:
