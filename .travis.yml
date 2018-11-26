@@ -1,11 +1,10 @@
 language: node_js
 matrix:
     include:
-        os:
-        - linux
-        dist: xenial
-        - osx
-        - windows
+        - os: linux
+          dist: xenial
+        - os: osx
+        - os: windows
 node_js:
     - 'lts/*'
 branches:
