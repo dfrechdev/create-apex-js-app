@@ -6,6 +6,10 @@
 
 By using a standardized way to build your JavaScript code, you will benefit from an increase in quality and reusability of your JavaScript codebase. `create-apex-js-app` helps you with the initial setup of your project, which can be tedious and time-consuming, and allows you to concentrate on your code.
 
+<p align="center">
+  <img width="100%" src="https://github.com/dfrechdev/create-apex-js-app/blob/master/static/images/caja-demo.svg">
+</p>
+
 ## Before you start
 
 Please make sure you have the following installed:
