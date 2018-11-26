@@ -6,11 +6,11 @@ matrix:
         dist: xenial
         - osx
         - windows
-        node_js:
-            - 'lts/*'
-        branches:
-            only:
-                - master
+node_js:
+    - 'lts/*'
+branches:
+    only:
+        - master
 install:
     - npm install -g
 script:
