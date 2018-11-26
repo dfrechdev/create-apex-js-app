@@ -1,6 +1,6 @@
 {
     "name": "create-apex-js-app",
-    "version": "0.0.9",
+    "version": "0.1.0",
     "description": "Bootstrap a JavaScript app for Oracle APEX applications",
     "main": "index.js",
     "scripts": {},
