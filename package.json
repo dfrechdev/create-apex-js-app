@@ -13,7 +13,7 @@
         "javascript"
     ],
     "dependencies": {
-        "apexjs-template-js-lib": "0.1.0",
+        "apexjs-template-js-lib": "0.1.1",
         "chalk": "^2.4.1",
         "commander": "^2.19.0",
         "cross-spawn": "^6.0.5",
